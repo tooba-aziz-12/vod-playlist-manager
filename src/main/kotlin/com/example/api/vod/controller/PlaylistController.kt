@@ -22,18 +22,18 @@ class PlaylistController(
     }
 
     @GetMapping("/{id}")
-    fun getPlaylist(@PathVariable id: Long): PlaylistDto {
+    fun getPlaylist(@PathVariable id: String): PlaylistDto {
         return playlistService.getPlaylist(id)
     }
 
     @DeleteMapping("/{id}")
-    fun deletePlaylist(@PathVariable id: Long) {
+    fun deletePlaylist(@PathVariable id: String) {
         playlistService.deletePlaylist(id)
     }
 
     @PutMapping("/{id}/name")
     fun updatePlaylistName(
-        @PathVariable id: Long,
+        @PathVariable id: String,
         @RequestBody newName: String
     ): PlaylistDto {
         return playlistService.updatePlaylistName(id, newName)

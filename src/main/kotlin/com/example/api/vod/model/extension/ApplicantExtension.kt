@@ -11,6 +11,8 @@ fun Playlist.convertToDto(): PlaylistDto{
         name = name,
         items = items.map { PlaylistItemDto(
             id = it.id!!,
+            name = it.name,
+            playlistId = it.playlist.id!!,
             videoId = it.videoId,
             startTime = it.startTime,
             endTime = it.endTime
