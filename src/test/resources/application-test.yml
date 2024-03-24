@@ -1,0 +1,35 @@
+server:
+  port: 5010
+spring:
+  autoconfigure:
+    exclude:
+      - org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+      apache:
+        coyote:
+          http11:
+            Http11InputBuffer: DEBUG
+
+datasource:
+  sample-db:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: sa
+    password: sa
+
+liquibase:
+  datasource:
+    sample-db:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;MODE=MYSQL
+      username: sa
+      password: sa
+      changelog: classpath:migrations/db.changelog-test.xml
