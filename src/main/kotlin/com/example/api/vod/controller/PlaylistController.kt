@@ -12,7 +12,7 @@ class PlaylistController(
     val playlistService: PlaylistService
 ) {
 
-    @PostMapping()
+    @PostMapping
     fun createPlaylist(
         @RequestParam name: String,
         @RequestHeader(RequestHeaders.USER_ID) userId: String,
