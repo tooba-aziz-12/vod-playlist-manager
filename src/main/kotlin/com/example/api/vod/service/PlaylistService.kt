@@ -1,7 +1,10 @@
 package com.example.api.vod.service
 
 import com.example.api.vod.dto.PlaylistDto
-import com.example.api.vod.dto.PlaylistItemDto
+import com.example.api.vod.exception.FailedToDeletePlaylistException
+import com.example.api.vod.exception.FailedToFindPlaylistException
+import com.example.api.vod.exception.FailedToSavePlaylistException
+import com.example.api.vod.exception.PlaylistNotFoundException
 import com.example.api.vod.model.Playlist
 import com.example.api.vod.model.extension.convertToDto
 import com.example.api.vod.repository.PlaylistRepository
@@ -19,13 +22,24 @@ class PlaylistService(val playlistRepository: PlaylistRepository) {
     }
 
     fun getPlaylist(id: String): PlaylistDto {
-        return findPlayList(id)
-            .orElseThrow { NoSuchElementException("Playlist with id $id not found") }
-            .convertToDto()
+        try {
+            return findPlayList(id)
+                .orElseThrow { PlaylistNotFoundException(playlistId = id) }
+                .convertToDto()
+        }catch (ex: PlaylistNotFoundException){
+            throw ex
+        }catch (ex: FailedToFindPlaylistException){
+            throw ex
+        }
     }
 
     fun deletePlaylist(id: String) {
-        playlistRepository.deleteById(id)
+        try {
+            playlistRepository.deleteById(id)
+        }catch (ex: Exception){
+            throw FailedToDeletePlaylistException(playlistId = id)
+        }
+
     }
 
     fun updatePlaylistName(id: String, newName: String): PlaylistDto {
@@ -35,12 +49,20 @@ class PlaylistService(val playlistRepository: PlaylistRepository) {
     }
 
     private fun savePlaylist(playlist: Playlist): Playlist{
-       return playlistRepository.save(playlist)
+        try {
+            return playlistRepository.save(playlist)
+        }catch (ex: Exception){
+            throw FailedToSavePlaylistException(playlistName = playlist.name)
+        }
     }
 
     private fun findPlayList(playlistId: String): Optional<Playlist> {
 
-        return playlistRepository.findById(playlistId)
+        try {
+            return playlistRepository.findById(playlistId)
+        }catch (ex: Exception){
+            throw FailedToFindPlaylistException(playlistId = playlistId)
+        }
     }
 
 }
