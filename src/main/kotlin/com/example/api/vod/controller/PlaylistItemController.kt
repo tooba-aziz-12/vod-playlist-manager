@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*
 
 
 @RestController
-@RequestMapping("/v1/playlist/items")
+@RequestMapping("/v1/playlist/item")
 class PlaylistItemController(val playlistItemService: PlaylistItemService) {
 
     @PostMapping
@@ -32,5 +32,12 @@ class PlaylistItemController(val playlistItemService: PlaylistItemService) {
         @RequestBody itemsDto: PlayListBatchItemDto
     ): PlaylistDto {
         return playlistItemService.reorderItemsInPlaylist(itemsDto)
+    }
+
+    @PutMapping
+    fun updatePlaylistItem(
+        @RequestBody updatedItemDto: PlaylistItemDto
+    ): PlaylistDto {
+        return playlistItemService.updatePlaylistItem(updatedItemDto)
     }
 }

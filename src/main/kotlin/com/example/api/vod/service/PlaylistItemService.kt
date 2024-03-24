@@ -56,4 +56,18 @@ class PlaylistItemService(val playlistRepository: PlaylistRepository) {
 
         return playlistRepository.save(playlist).convertToDto()
     }
+
+    fun updatePlaylistItem(updatedItemDto: PlaylistItemDto): PlaylistDto {
+        val playlist = playlistRepository.findById(updatedItemDto.playlistId).get()
+        val item = playlist.items.find { it.id == updatedItemDto.id }
+            ?: throw NoSuchElementException("Playlist item with id $updatedItemDto.id not found")
+
+        item.apply {
+            videoId = updatedItemDto.videoId
+            startTime = updatedItemDto.startTime
+            endTime = updatedItemDto.endTime
+        }
+
+        return playlistRepository.save(playlist).convertToDto()
+    }
 }
