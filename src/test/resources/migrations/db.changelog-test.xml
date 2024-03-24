@@ -5,6 +5,6 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <include file="classpath:migrations/2024.03.08-create-schema-sample.mysql.sql"/>
+    <include file="classpath:migrations/2024.03.24-create-table-vod-video-source.mysql.sql"/>
 
 </databaseChangeLog>

@@ -8,15 +8,15 @@ cloud:
 
 
 datasource:
-  sample-db:
-    url: jdbc:mysql://localhost:3306/sample_db
+  vod-db:
+    url: jdbc:mysql://localhost:3306/vod_db
     username: root
     password: my-dhr-pwd
 
 liquibase:
   datasource:
-    sample-db:
-      url: jdbc:mysql://localhost:3306/sample_db
+    vod-db:
+      url: jdbc:mysql://localhost:3306/vod_db
       username: root
       password: my-dhr-pwd
       changelog: classpath:migrations/local/db.changelog-local.xml

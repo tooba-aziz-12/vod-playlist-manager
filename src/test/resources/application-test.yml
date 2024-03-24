@@ -19,7 +19,7 @@ logging:
             Http11InputBuffer: DEBUG
 
 datasource:
-  sample-db:
+  vod-db:
     driver-class-name: org.h2.Driver
     url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
     username: sa
@@ -27,7 +27,7 @@ datasource:
 
 liquibase:
   datasource:
-    sample-db:
+    vod-db:
       driver-class-name: org.h2.Driver
       url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1;MODE=MYSQL
       username: sa

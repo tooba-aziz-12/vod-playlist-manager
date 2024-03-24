@@ -11,13 +11,13 @@
 	<groupId>com.example.api</groupId>
 	<artifactId>spring-boot-kotlin-starter-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>spring_boot_kotlin_starter</name>
+	<name>vod_playlist_manager</name>
 	<description>This project can be used to create Backend Projects in Kotlin</description>
 	<properties>
 		<java.version>17</java.version>
 		<kotlin.version>1.7.22</kotlin.version>
 		<liquibase.version>4.15.0</liquibase.version>
-		<start-class>com.example.api.spring_boot_kotlin_service</start-class>
+		<start-class>com.example.api.vod</start-class>
 	</properties>
 
 	<dependencies>
