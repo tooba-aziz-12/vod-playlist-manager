@@ -17,19 +17,23 @@ import kotlin.NoSuchElementException
 class PlaylistService(val playlistRepository: PlaylistRepository) {
 
     fun createPlaylist(name: String): PlaylistDto {
-        val playlist = Playlist(name = name)
-        return savePlaylist(playlist).convertToDto()
+        try {
+            val playlist = Playlist(name = name)
+            return playlistRepository.save(playlist).convertToDto()
+        }catch (ex: Exception){
+            throw FailedToSavePlaylistException(playlistName = name)
+        }
     }
 
     fun getPlaylist(id: String): PlaylistDto {
         try {
-            return findPlayList(id)
+            return playlistRepository.findById(id)
                 .orElseThrow { PlaylistNotFoundException(playlistId = id) }
                 .convertToDto()
         }catch (ex: PlaylistNotFoundException){
             throw ex
-        }catch (ex: FailedToFindPlaylistException){
-            throw ex
+        }catch (ex: Exception){
+            throw FailedToFindPlaylistException(playlistId = id)
         }
     }
 
@@ -43,26 +47,16 @@ class PlaylistService(val playlistRepository: PlaylistRepository) {
     }
 
     fun updatePlaylistName(id: String, newName: String): PlaylistDto {
-        val playlist = findPlayList(id).get()
-        playlist.name = newName
-        return savePlaylist(playlist).convertToDto()
-    }
-
-    private fun savePlaylist(playlist: Playlist): Playlist{
         try {
-            return playlistRepository.save(playlist)
+            val playlist = playlistRepository.findById(id).orElseThrow {
+                PlaylistNotFoundException(playlistId = id)
+            }
+            playlist.name = newName
+            return playlistRepository.save(playlist).convertToDto()
+        }catch (ex: PlaylistNotFoundException){
+            throw ex
         }catch (ex: Exception){
-            throw FailedToSavePlaylistException(playlistName = playlist.name)
+            throw FailedToSavePlaylistException(playlistName = newName)
         }
     }
-
-    private fun findPlayList(playlistId: String): Optional<Playlist> {
-
-        try {
-            return playlistRepository.findById(playlistId)
-        }catch (ex: Exception){
-            throw FailedToFindPlaylistException(playlistId = playlistId)
-        }
-    }
-
 }
