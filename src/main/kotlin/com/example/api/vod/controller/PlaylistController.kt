@@ -14,10 +14,9 @@ class PlaylistController(
 
     @PostMapping
     fun createPlaylist(
-        @RequestParam name: String,
-        @RequestHeader(RequestHeaders.USER_ID) userId: String,
+        @RequestBody playlistDto: PlaylistDto,
     ): PlaylistDto {
-        return playlistService.createPlaylist(name)
+        return playlistService.createPlaylist(playlistDto)
 
     }
 

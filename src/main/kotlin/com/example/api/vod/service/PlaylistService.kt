@@ -16,12 +16,12 @@ import kotlin.NoSuchElementException
 @Service
 class PlaylistService(val playlistRepository: PlaylistRepository) {
 
-    fun createPlaylist(name: String): PlaylistDto {
+    fun createPlaylist(playlistDto: PlaylistDto): PlaylistDto {
         try {
-            val playlist = Playlist(name = name)
+            val playlist = playlistDto.toPlaylist()
             return playlistRepository.save(playlist).convertToDto()
         }catch (ex: Exception){
-            throw FailedToSavePlaylistException(playlistName = name)
+            throw FailedToSavePlaylistException(playlistName = playlistDto.name)
         }
     }
 

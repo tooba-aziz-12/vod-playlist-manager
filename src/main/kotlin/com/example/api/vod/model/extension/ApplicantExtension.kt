@@ -3,6 +3,7 @@ package com.example.api.vod.model.extension
 import com.example.api.vod.dto.PlaylistDto
 import com.example.api.vod.dto.PlaylistItemDto
 import com.example.api.vod.model.Playlist
+import com.example.api.vod.model.PlaylistItem
 
 fun Playlist.convertToDto(): PlaylistDto{
 
@@ -15,7 +16,21 @@ fun Playlist.convertToDto(): PlaylistDto{
             playlistId = it.playlist.id!!,
             videoId = it.videoId,
             startTime = it.startTime,
-            endTime = it.endTime
+            endTime = it.endTime,
+            sequence = it.sequence
         ) }
+    )
+}
+
+fun PlaylistItem.convertToDto(): PlaylistItemDto{
+
+    return PlaylistItemDto(
+        id= id!!,
+        name = name,
+        playlistId = playlist.id!!,
+        videoId = videoId,
+        startTime = startTime,
+        endTime = endTime,
+        sequence = sequence
     )
 }
