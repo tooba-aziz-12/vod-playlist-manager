@@ -1,5 +1,9 @@
 package com.example.api.vod.security.filter
 
+import com.example.api.vod.constant.RequestHeaders
+import com.fasterxml.jackson.core.type.TypeReference
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.google.gson.Gson
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletException
 import jakarta.servlet.http.HttpServletRequest
@@ -26,6 +30,28 @@ class PreAuthorizationFilter : OncePerRequestFilter() {
         response: HttpServletResponse,
         filterChain: FilterChain
     ) {
-        filterChain.doFilter(request, response)
+        try {
+            val userId = request.getHeader(RequestHeaders.USER_ID)
+            val permissions = request.getHeader(RequestHeaders.PERMISSIONS).split(",".toRegex())
+                .toTypedArray()
+            injectSecurityPrincipal(userId, permissions)
+            filterChain.doFilter(request, response)
+        }catch (ex: Exception){
+            return
+        }
+    }
+
+    private fun injectSecurityPrincipal(userId: String, permissions: Array<String>) {
+        // add authenticated principal to current thread's security pool
+        if (SecurityContextHolder.getContext().authentication == null) {
+            val authorities: List<GrantedAuthority> = Stream.of(*permissions).map { permission: String? ->
+                SimpleGrantedAuthority(
+                    permission
+                )
+            }.collect(Collectors.toList())
+            val userDetails: UserDetails = User(userId, "", authorities)
+            val authentication: Authentication = UsernamePasswordAuthenticationToken(userDetails, null, authorities)
+            SecurityContextHolder.getContext().authentication = authentication
+        }
     }
 }
