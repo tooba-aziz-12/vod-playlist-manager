@@ -1,7 +1,7 @@
 package com.example.api.vod.controller
 
 import com.example.api.vod.fixture.PlaylistFixture
-import com.example.api.vod.fixture.PlaylistFixture.Companion.playListBatchItemDto
+import com.example.api.vod.fixture.PlaylistFixture.Companion.playListReorderItemDto
 import com.example.api.vod.service.PlaylistItemService
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions
@@ -56,13 +56,13 @@ class PlaylistItemControllerTest {
         @Test
         fun reorderPlaylist(){
 
-            whenever(playlistItemService.reorderItemsInPlaylist(playListBatchItemDto)).thenReturn(
+            whenever(playlistItemService.reorderItemsInPlaylist(playListReorderItemDto)).thenReturn(
                 PlaylistFixture.playlistDto
             )
 
             val mvcResult: MvcResult = mockMvc.perform(
                 MockMvcRequestBuilders.put("${BASE_URI}/reorder")
-                    .content(objectMapper.writeValueAsString(playListBatchItemDto))
+                    .content(objectMapper.writeValueAsString(playListReorderItemDto))
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
             )
@@ -70,14 +70,14 @@ class PlaylistItemControllerTest {
                 .andReturn()
 
 
-            Mockito.verify(playlistItemService, times(1)).reorderItemsInPlaylist(playListBatchItemDto)
+            Mockito.verify(playlistItemService, times(1)).reorderItemsInPlaylist(playListReorderItemDto)
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.OK.value())
         }
 
         @Test
         fun return400OnBadPayload(){
 
-            val requestDto = playListBatchItemDto.copy()
+            val requestDto = playListReorderItemDto.copy()
             requestDto.playlistId = ""
 
             val mvcResult: MvcResult = mockMvc.perform(

@@ -1,12 +1,11 @@
 package com.example.api.vod.fixture
 
-import com.example.api.vod.dto.PlayListBatchItemDto
+import com.example.api.vod.dto.PlayListReorderItemDto
 import com.example.api.vod.model.Playlist
 import com.example.api.vod.model.PlaylistItem
 import com.example.api.vod.model.extension.convertToDto
 import java.time.LocalDateTime
 import java.time.ZoneOffset
-import kotlin.time.TimedValue
 
 class PlaylistFixture {
 
@@ -70,9 +69,9 @@ class PlaylistFixture {
 
         val playlistItem2Dto = playlistItem2.convertToDto()
 
-        val playListBatchItemDto = PlayListBatchItemDto(
+        val playListReorderItemDto = PlayListReorderItemDto(
             playlistId = "test-id",
-            items = mutableListOf(playlistItemDto)
+            items = mutableListOf(playlistItemDto, playlistItem2Dto)
         )
 
     }

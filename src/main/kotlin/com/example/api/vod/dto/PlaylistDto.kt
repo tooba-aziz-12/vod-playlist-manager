@@ -48,11 +48,11 @@ data class PlaylistItemDto(
     val startTime: Long,
     val endTime: Long,
     @field:NotBlank(message = "Name cannot be empty")
-    val name: String,
-    val sequence: Long
+    var name: String,
+    var sequence: Long
 )
 
-data class PlayListBatchItemDto(
+data class PlayListReorderItemDto(
 
     @field:NotBlank(message = "Name cannot be empty")
     var playlistId: String,

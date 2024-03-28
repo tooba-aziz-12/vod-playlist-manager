@@ -1,45 +1,41 @@
 package com.example.api.vod.service
 
-import com.example.api.vod.dto.PlayListBatchItemDto
+import com.example.api.vod.dto.PlayListReorderItemDto
 import com.example.api.vod.dto.PlaylistDto
 import com.example.api.vod.dto.PlaylistItemDto
-import com.example.api.vod.exception.FailedToSavePlaylistException
 import com.example.api.vod.exception.FailedToSavePlaylistItemException
 import com.example.api.vod.exception.PlaylistItemNotFoundException
 import com.example.api.vod.exception.PlaylistNotFoundException
-import com.example.api.vod.model.Playlist
-import com.example.api.vod.model.PlaylistItem
 import com.example.api.vod.model.extension.convertToDto
-import com.example.api.vod.repository.PlaylistItemRepository
 import com.example.api.vod.repository.PlaylistRepository
 import org.springframework.stereotype.Service
 
 @Service
 class PlaylistItemService(val playlistRepository: PlaylistRepository) {
 
-    fun reorderItemsInPlaylist(playListBatchItemDto: PlayListBatchItemDto): PlaylistDto {
+    fun reorderItemsInPlaylist(playListReorderItemDto: PlayListReorderItemDto): PlaylistDto {
         try {
-            val playlist = playlistRepository.findById(playListBatchItemDto.playlistId).orElseThrow {
-                PlaylistNotFoundException(playlistId = playListBatchItemDto.playlistId)
+            val playlistFromDb = playlistRepository.findById(playListReorderItemDto.playlistId).orElseThrow {
+                PlaylistNotFoundException(playlistId = playListReorderItemDto.playlistId)
             }
-            val itemIds = playListBatchItemDto.items.map { it.id }
+            val itemIdAgainstSequence : MutableMap<String, Long> = mutableMapOf()
 
-            val itemMap = playlist.items.associateBy { it.id }
-
-            val reorderedItems = itemIds.mapIndexed { index, itemId ->
-                itemMap[itemId]?.copy(sequence = index.toLong()) ?: throw PlaylistItemNotFoundException("Playlist item with id $itemId not found")
+            playListReorderItemDto.items.map {
+                itemIdAgainstSequence[it.id] = it.sequence
             }
 
-            playlist.items.clear()
-            playlist.items.addAll(reorderedItems)
+            playlistFromDb.items.forEach { item->
+                val updatedSequence  = itemIdAgainstSequence[item.id]?: throw PlaylistItemNotFoundException("Playlist item with id ${item.id} not found")
+                item.sequence = updatedSequence
+            }
 
-            return playlistRepository.save(playlist).convertToDto()
+            return playlistRepository.save(playlistFromDb).convertToDto()
         }catch (ex: PlaylistNotFoundException){
             throw ex
         }catch (ex: PlaylistItemNotFoundException){
             throw ex
         } catch (ex: Exception){
-            throw FailedToSavePlaylistItemException(playlistId = playListBatchItemDto.playlistId)
+            throw FailedToSavePlaylistItemException(playlistId = playListReorderItemDto.playlistId)
         }
     }
 
