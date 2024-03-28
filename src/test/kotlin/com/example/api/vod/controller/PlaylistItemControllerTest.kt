@@ -1,6 +1,7 @@
 package com.example.api.vod.controller
 
 import com.example.api.vod.fixture.PlaylistFixture
+import com.example.api.vod.fixture.PlaylistFixture.Companion.deletePlaylistItem
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playListItemUpdateDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playListReorderItemDto
 import com.example.api.vod.service.PlaylistItemService
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 import org.springframework.http.HttpStatus
@@ -134,6 +136,46 @@ class PlaylistItemControllerTest {
 
 
             Mockito.verify(playlistItemService, times(0)).updatePlaylistItem(playListItemUpdateDto)
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.BAD_REQUEST.value())
+        }
+
+    }
+
+    @Nested
+    inner class DeletePlaylistItemTest{
+
+        @Test
+        fun deletePlaylistItem(){
+
+            doNothing().whenever(playlistItemService).deleteItem(deletedItemDto = deletePlaylistItem)
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.delete(BASE_URI)
+                    .content(objectMapper.writeValueAsString(deletePlaylistItem))
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andReturn()
+
+
+            Mockito.verify(playlistItemService, times(1)).deleteItem(deletePlaylistItem)
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.OK.value())
+        }
+
+        @Test
+        fun return400OnBadPayload(){
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.delete(BASE_URI)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isBadRequest)
+                .andReturn()
+
+
+            Mockito.verify(playlistItemService, times(0)).deleteItem(deletePlaylistItem)
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.BAD_REQUEST.value())
         }
 

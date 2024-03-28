@@ -2,12 +2,14 @@ package com.example.api.vod.service
 
 import com.example.api.vod.exception.*
 import com.example.api.vod.fixture.PlaylistFixture
+import com.example.api.vod.fixture.PlaylistFixture.Companion.deletePlaylistItem
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playListItemUpdateDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playListReorderItemDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlist
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistItem2
 import com.example.api.vod.model.Playlist
 import com.example.api.vod.model.PlaylistItem
+import com.example.api.vod.repository.PlaylistItemRepository
 import com.example.api.vod.repository.PlaylistRepository
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
@@ -19,6 +21,8 @@ import org.mockito.Captor
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.argumentCaptor
+import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 import java.time.LocalDateTime
@@ -33,6 +37,9 @@ class PlayListItemServiceTest {
     @Mock
     lateinit var playlistRepository: PlaylistRepository
 
+    @Mock
+    lateinit var playListItemRepository: PlaylistItemRepository
+
 
     @Captor
     val playlistCaptor: ArgumentCaptor<Playlist> =
@@ -41,7 +48,8 @@ class PlayListItemServiceTest {
     @BeforeEach
     fun setup() {
         this.playlistItemService = PlaylistItemService(
-            playlistRepository
+            playlistRepository,
+            playListItemRepository
         )
     }
 
@@ -220,6 +228,25 @@ class PlayListItemServiceTest {
 
             Mockito.verify(playlistRepository, times(1)).findById(playListItemUpdateDto.playlistId)
             Mockito.verify(playlistRepository, times(1)).save(playlistCaptor.capture())
+
+        }
+    }
+
+    @Nested
+    inner class DeletePlaylistItemTest{
+
+        @Test
+        fun deleteItem(){
+
+            whenever(playListItemRepository.findByPlaylistIdAndId(deletePlaylistItem.playlistId, deletePlaylistItem.playlistItemId))
+                .thenReturn(Optional.of(playlistItem2))
+
+            doNothing().whenever(playListItemRepository).delete(playlistItem2)
+
+            playlistItemService.deleteItem(deletePlaylistItem)
+
+            Mockito.verify(playListItemRepository, times(1)).findByPlaylistIdAndId(deletePlaylistItem.playlistId, deletePlaylistItem.playlistItemId)
+            Mockito.verify(playListItemRepository, times(1)).delete(playlistItem2)
 
         }
     }

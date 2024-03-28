@@ -1,6 +1,7 @@
 package com.example.api.vod.fixture
 
 import com.example.api.vod.dto.PlayListReorderItemDto
+import com.example.api.vod.dto.PlaylistItemDeleteDto
 import com.example.api.vod.dto.PlaylistItemUpdateDto
 import com.example.api.vod.model.Playlist
 import com.example.api.vod.model.PlaylistItem
@@ -81,6 +82,11 @@ class PlaylistFixture {
             startTime = startTime,
             endTime = endTime,
             name = itemName
+        )
+
+        val deletePlaylistItem = PlaylistItemDeleteDto(
+            "test-playlist",
+            "test-item"
         )
 
     }
