@@ -73,3 +73,10 @@ data class PlaylistItemUpdateDto(
 
     val endTime: Long,
 )
+data class PlaylistItemDeleteDto(
+    @field:NotBlank(message = "Playlist id cannot be empty")
+    var playlistId: String,
+
+    @field:NotBlank(message = "Item id cannot be empty")
+    var playlistItemId: String,
+)

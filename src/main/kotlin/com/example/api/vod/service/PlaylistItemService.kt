@@ -1,19 +1,19 @@
 package com.example.api.vod.service
 
-import com.example.api.vod.dto.PlayListReorderItemDto
-import com.example.api.vod.dto.PlaylistDto
-import com.example.api.vod.dto.PlaylistItemDto
-import com.example.api.vod.dto.PlaylistItemUpdateDto
+import com.example.api.vod.dto.*
 import com.example.api.vod.exception.FailedToSavePlaylistItemException
 import com.example.api.vod.exception.InvalidFieldValueException
 import com.example.api.vod.exception.PlaylistItemNotFoundException
 import com.example.api.vod.exception.PlaylistNotFoundException
 import com.example.api.vod.model.extension.convertToDto
+import com.example.api.vod.repository.PlaylistItemRepository
 import com.example.api.vod.repository.PlaylistRepository
 import org.springframework.stereotype.Service
 
 @Service
-class PlaylistItemService(val playlistRepository: PlaylistRepository) {
+class PlaylistItemService(
+    val playlistRepository: PlaylistRepository,
+    val playlistItemRepository: PlaylistItemRepository) {
 
     fun reorderItemsInPlaylist(playListReorderItemDto: PlayListReorderItemDto): PlaylistDto {
         try {
@@ -69,5 +69,12 @@ class PlaylistItemService(val playlistRepository: PlaylistRepository) {
             throw FailedToSavePlaylistItemException(playlistId = updatedItemDto.playlistId)
         }
 
+    }
+
+    fun deleteItem(deletedItemDto: PlaylistItemDeleteDto) {
+
+        val item  = playlistItemRepository.findByPlaylistIdAndId(deletedItemDto.playlistId, deletedItemDto.playlistItemId)
+            .orElseThrow { PlaylistItemNotFoundException(deletedItemDto.playlistItemId) }
+        playlistItemRepository.delete(item)
     }
 }

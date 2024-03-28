@@ -1,9 +1,6 @@
 package com.example.api.vod.controller
 
-import com.example.api.vod.dto.PlayListReorderItemDto
-import com.example.api.vod.dto.PlaylistDto
-import com.example.api.vod.dto.PlaylistItemDto
-import com.example.api.vod.dto.PlaylistItemUpdateDto
+import com.example.api.vod.dto.*
 import com.example.api.vod.service.PlaylistItemService
 import jakarta.validation.Valid
 import org.springframework.validation.annotation.Validated
@@ -27,5 +24,12 @@ class PlaylistItemController(val playlistItemService: PlaylistItemService) {
         @RequestBody updatedItemDto: PlaylistItemUpdateDto
     ): PlaylistDto {
         return playlistItemService.updatePlaylistItem(updatedItemDto)
+    }
+
+    @DeleteMapping
+    fun deletePlaylistItem(
+        @RequestBody deletedItemDto: PlaylistItemDeleteDto
+    ) {
+        return playlistItemService.deleteItem(deletedItemDto)
     }
 }
