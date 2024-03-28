@@ -24,15 +24,10 @@ class PlaylistController(
         return playlistService.getPlaylist(id)
     }
 
-    @DeleteMapping("/{id}")
-    fun deletePlaylist(@PathVariable id: String) {
-        playlistService.deletePlaylist(id)
-    }
-
-    @PutMapping("/{id}/name")
+    @PatchMapping("/{id}/name")
     fun updatePlaylistName(
         @PathVariable id: String,
-        @RequestBody newName: String
+        @RequestParam newName: String
     ): PlaylistDto {
         return playlistService.updatePlaylistName(id, newName)
     }

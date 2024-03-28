@@ -1,14 +1,15 @@
 package com.example.api.vod.service
 
+import com.example.api.vod.exception.FailedToFindPlaylistException
 import com.example.api.vod.exception.FailedToSavePlaylistException
-import com.example.api.vod.fixture.PlaylistFixture
+import com.example.api.vod.exception.PlaylistNotFoundException
 import com.example.api.vod.fixture.PlaylistFixture.Companion.emptyPlaylist
-import com.example.api.vod.fixture.PlaylistFixture.Companion.emptyPlaylistDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlist
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistItem2
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistItem2Dto
 import com.example.api.vod.model.Playlist
+import com.example.api.vod.model.extension.convertToDto
 import com.example.api.vod.repository.PlaylistRepository
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
@@ -50,20 +51,22 @@ class PlaylistServiceTest {
         @Test
         fun createEmptyPlaylist(){
 
-            playlistDto.id = ""
-            whenever(playlistRepository.save(playlistCaptor.capture())).thenReturn(emptyPlaylist)
+            val requestDto = emptyPlaylist.convertToDto()
 
-            val createdPlaylist = playlistService.upsertPlaylist(emptyPlaylistDto)
+            val requestPlaylist = emptyPlaylist.copy()
+            whenever(playlistRepository.save(playlistCaptor.capture())).thenReturn(requestPlaylist)
+
+            val createdPlaylist = playlistService.upsertPlaylist(requestDto)
 
             Mockito.verify(playlistRepository, times(1)).save(playlistCaptor.capture())
 
             val actualInvocationOfSave = playlistCaptor.value
 
-            Assertions.assertNotEquals(playlist.id, "")
-            Assertions.assertEquals(playlist.name, actualInvocationOfSave.name, createdPlaylist.name)
+            Assertions.assertNotEquals(requestPlaylist.id, "")
+            Assertions.assertEquals(requestPlaylist.name, actualInvocationOfSave.name, createdPlaylist.name)
 
-            Assertions.assertEquals(actualInvocationOfSave.items.size, 0L)
-            Assertions.assertEquals(createdPlaylist.items.size, 0L)
+            Assertions.assertEquals(actualInvocationOfSave.items.size, 0)
+            Assertions.assertEquals(createdPlaylist.items.size, 0)
 
         }
 
@@ -71,6 +74,7 @@ class PlaylistServiceTest {
         fun createPlaylistWithItem(){
 
             playlistDto.id = ""
+
             whenever(playlistRepository.save(playlistCaptor.capture())).thenReturn(playlist)
 
             val createdPlaylist = playlistService.upsertPlaylist(playlistDto)
@@ -142,6 +146,113 @@ class PlaylistServiceTest {
 
             Mockito.verify(playlistRepository, times(1)).save(playlistCaptor.capture())
         }
+    }
+
+    @Nested
+    inner class GetPlaylistTest{
+
+        @Test
+        fun getPlaylistById(){
+
+            playlist.id = "existing-id-from-db"
+            val expectedResponse = playlist.convertToDto()
+
+            whenever(playlistRepository.findById(playlist.id!!)).thenReturn(Optional.of(playlist))
+
+            val responsePlaylist = playlistService.getPlaylist(playlist.id!!)
+
+            Assertions.assertEquals(responsePlaylist, expectedResponse)
+        }
+
+        @Test
+        fun throwCustomExceptionOnFetchFailure(){
+
+            val playlistId = "existing-id-from-db"
+            whenever(playlistRepository.findById(playlistId)).thenThrow(RuntimeException::class.java)
+
+            try {
+
+                playlistService.getPlaylist(playlistId)
+
+            }catch (ex: Exception){
+                Assertions.assertEquals(FailedToFindPlaylistException::class.java, ex.javaClass)
+            }
+
+        }
+
+        @Test
+        fun throwCustomExceptionIfNotFound(){
+
+            val playlistId = "wrong id"
+            whenever(playlistRepository.findById(playlistId)).thenReturn(Optional.empty())
+
+            try {
+
+                playlistService.getPlaylist(playlistId)
+
+            }catch (ex: Exception){
+                Assertions.assertEquals(PlaylistNotFoundException::class.java, ex.javaClass)
+            }
+
+        }
+    }
+
+    @Nested
+    inner class UpdatePlaylistNameTest{
+        val requestId = "test-id"
+        val playlistName = "new-playlist-name"
+        @Test
+        fun updatePlaylistName(){
+
+            whenever(playlistRepository.findById(requestId)).thenReturn(Optional.of(playlist))
+
+            whenever(playlistRepository.save(playlistCaptor.capture())).thenReturn(playlist)
+
+            playlistService.updatePlaylistName(requestId, playlistName)
+
+            Mockito.verify(playlistRepository, times(1)).findById(requestId)
+
+            Mockito.verify(playlistRepository, times(1)).save(playlistCaptor.capture())
+
+            val actualInvocationOfSave = playlistCaptor.value
+
+            Assertions.assertEquals(playlistName, actualInvocationOfSave.name)
+        }
+
+        @Test
+        fun customExceptionIfNotFound(){
+
+            whenever(playlistRepository.findById(requestId)).thenReturn(Optional.empty())
+
+            try {
+                playlistService.updatePlaylistName(requestId, playlistName)
+            }catch (ex: Exception){
+                Assertions.assertEquals(PlaylistNotFoundException::class.java, ex.javaClass)
+            }
+
+            Mockito.verify(playlistRepository, times(1)).findById(requestId)
+
+            Mockito.verify(playlistRepository, times(0)).save(playlistCaptor.capture())
+        }
+
+        @Test
+        fun customExceptionIfSaveFails(){
+
+            whenever(playlistRepository.findById(requestId)).thenReturn(Optional.of(playlist))
+
+            whenever(playlistRepository.save(playlistCaptor.capture())).thenThrow(RuntimeException())
+
+            try {
+                playlistService.updatePlaylistName(requestId, playlistName)
+            }catch (ex: Exception){
+                Assertions.assertEquals(FailedToSavePlaylistException::class.java, ex.javaClass)
+            }
+
+            Mockito.verify(playlistRepository, times(1)).findById(requestId)
+
+            Mockito.verify(playlistRepository, times(1)).save(playlistCaptor.capture())
+        }
+
     }
 
 }

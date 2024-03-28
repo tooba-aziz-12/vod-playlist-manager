@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.any
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 import org.springframework.http.HttpStatus
@@ -83,8 +84,97 @@ class PlaylistControllerTest {
                 .andReturn()
 
 
-            Mockito.verify(playlistService, times(0)).upsertPlaylist(playlistDto)
+            Mockito.verify(playlistService, times(0)).upsertPlaylist(any())
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.BAD_REQUEST.value())
+
+        }
+    }
+
+    @Nested
+    inner class GetPlaylistTest{
+        val requestId = "test-id"
+
+        @Test
+        fun getPlaylistById(){
+
+
+
+            whenever(playlistService.getPlaylist(requestId)).thenReturn(
+                playlistDto
+            )
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.get("$BASE_URI/$requestId")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andReturn()
+
+
+            Mockito.verify(playlistService, times(1)).getPlaylist(requestId)
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.OK.value())
+        }
+
+        @Test
+        fun shouldReturn405OnEmptyPathVar(){
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.get(BASE_URI)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isMethodNotAllowed)
+                .andReturn()
+
+
+            Mockito.verify(playlistService, times(0)).upsertPlaylist(playlistDto)
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.METHOD_NOT_ALLOWED.value())
+
+        }
+    }
+
+    @Nested
+    inner class UpdatePlaylistNameTest{
+        val requestId = "test-id"
+        val playlistName = "new-playlist-name"
+
+        @Test
+        fun updatePlaylistName(){
+
+
+            whenever(playlistService.updatePlaylistName(requestId, playlistName)).thenReturn(
+                playlistDto
+            )
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.patch("$BASE_URI/$requestId/name")
+                    .param("newName", playlistName)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andReturn()
+
+
+            Mockito.verify(playlistService, times(1)).updatePlaylistName(requestId, playlistName)
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.OK.value())
+        }
+
+        @Test
+        fun shouldReturn405OnEmptyPathVar(){
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.patch(BASE_URI)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isMethodNotAllowed)
+                .andReturn()
+
+
+            Mockito.verify(playlistService, times(0)).updatePlaylistName(any(), any())
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.METHOD_NOT_ALLOWED.value())
 
         }
     }

@@ -42,7 +42,7 @@ internal class AuditorAwareConfigurationTest {
 
     @Test
     fun currentAuditorShouldExist() {
-        val userIdHeader = "Tooba"
+        val userIdHeader = ""
 
         `when`(mockHttpRequest.getHeader(com.example.api.vod.constant.RequestHeaders.USER_ID)).thenReturn(userIdHeader)
         preAuthorizationFilter.doFilterInternal(mockHttpRequest, mockHttpResponse, mockFilterChain)

@@ -34,15 +34,6 @@ class PlaylistService(val playlistRepository: PlaylistRepository) {
         }
     }
 
-    fun deletePlaylist(id: String) {
-        try {
-            playlistRepository.deleteById(id)
-        }catch (ex: Exception){
-            throw FailedToDeletePlaylistException(playlistId = id)
-        }
-
-    }
-
     fun updatePlaylistName(id: String, newName: String): PlaylistDto {
         try {
             val playlist = playlistRepository.findById(id).orElseThrow {
