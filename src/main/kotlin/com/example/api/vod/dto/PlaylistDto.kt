@@ -41,16 +41,20 @@ data class PlaylistDto(
 
 data class PlaylistItemDto(
     var id: String = "",
+    @field:NotBlank(message = "Name cannot be empty")
     val playlistId: String,
+    @field:NotBlank(message = "Name cannot be empty")
     val videoId: String,
     val startTime: Long,
     val endTime: Long,
+    @field:NotBlank(message = "Name cannot be empty")
     val name: String,
     val sequence: Long
 )
 
 data class PlayListBatchItemDto(
 
-    val playlistId: String,
+    @field:NotBlank(message = "Name cannot be empty")
+    var playlistId: String,
     val items : List<PlaylistItemDto>
 )

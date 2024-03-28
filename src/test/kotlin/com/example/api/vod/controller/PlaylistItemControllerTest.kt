@@ -48,19 +48,20 @@ class PlaylistItemControllerTest {
     ) {
         mockMvc = MockMvcBuilders.standaloneSetup(PlaylistItemController(playlistItemService)).build()
     }
-/*
+
+
     @Nested
-    inner class AddItemsInBatchTest{
+    inner class ReorderPlaylistItemTest{
 
         @Test
-        fun addItemsInBatch(){
+        fun reorderPlaylist(){
 
-            whenever(playlistItemService.addItemsToPlaylist(playListBatchItemDto = playListBatchItemDto)).thenReturn(
+            whenever(playlistItemService.reorderItemsInPlaylist(playListBatchItemDto)).thenReturn(
                 PlaylistFixture.playlistDto
             )
 
             val mvcResult: MvcResult = mockMvc.perform(
-                MockMvcRequestBuilders.post("$BASE_URI/batch")
+                MockMvcRequestBuilders.put("${BASE_URI}/reorder")
                     .content(objectMapper.writeValueAsString(playListBatchItemDto))
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
@@ -69,15 +70,19 @@ class PlaylistItemControllerTest {
                 .andReturn()
 
 
-            Mockito.verify(playlistItemService, times(1)).addItemsToPlaylist(playListBatchItemDto)
+            Mockito.verify(playlistItemService, times(1)).reorderItemsInPlaylist(playListBatchItemDto)
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.OK.value())
         }
 
         @Test
-        fun shouldReturn400OnBadPayload(){
+        fun return400OnBadPayload(){
+
+            val requestDto = playListBatchItemDto.copy()
+            requestDto.playlistId = ""
 
             val mvcResult: MvcResult = mockMvc.perform(
-                MockMvcRequestBuilders.post("$BASE_URI/batch")
+                MockMvcRequestBuilders.put("${BASE_URI}/reorder")
+                    .content(objectMapper.writeValueAsString(requestDto))
                     .contentType(MediaType.APPLICATION_JSON)
                     .accept(MediaType.APPLICATION_JSON)
             )
@@ -85,10 +90,10 @@ class PlaylistItemControllerTest {
                 .andReturn()
 
 
-            Mockito.verify(playlistItemService, times(0)).addItemsToPlaylist(PlaylistFixture.playListBatchItemDto)
+            Mockito.verify(playlistItemService, times(0)).reorderItemsInPlaylist(requestDto)
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.BAD_REQUEST.value())
-
         }
-    }*/
+
+    }
 
 }
