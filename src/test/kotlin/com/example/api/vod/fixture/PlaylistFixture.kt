@@ -16,7 +16,7 @@ class PlaylistFixture {
 
         private const val videoId = "test-video-id"
 
-        private val startTime: Long = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+        private val startTime: Long = LocalDateTime.now().minusMinutes(30).toEpochSecond(ZoneOffset.UTC)
 
         private val endTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
 

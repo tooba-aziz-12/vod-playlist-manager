@@ -69,7 +69,7 @@ data class PlaylistItemUpdateDto(
     @field:NotBlank(message = "Name cannot be empty")
     var name: String,
 
-    val startTime: Long,
+    var startTime: Long,
 
     val endTime: Long,
 )

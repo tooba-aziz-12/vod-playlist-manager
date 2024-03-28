@@ -5,6 +5,7 @@ import com.example.api.vod.dto.PlaylistDto
 import com.example.api.vod.dto.PlaylistItemDto
 import com.example.api.vod.dto.PlaylistItemUpdateDto
 import com.example.api.vod.exception.FailedToSavePlaylistItemException
+import com.example.api.vod.exception.InvalidFieldValueException
 import com.example.api.vod.exception.PlaylistItemNotFoundException
 import com.example.api.vod.exception.PlaylistNotFoundException
 import com.example.api.vod.model.extension.convertToDto
@@ -42,10 +43,13 @@ class PlaylistItemService(val playlistRepository: PlaylistRepository) {
 
     fun updatePlaylistItem(updatedItemDto: PlaylistItemUpdateDto): PlaylistDto {
         try {
+            if (updatedItemDto.startTime >= updatedItemDto.endTime){
+                throw InvalidFieldValueException(errorMessage = "Start time can not be less than end time")
+            }
             val playlist = playlistRepository.findById(updatedItemDto.playlistId).orElseThrow {
                 PlaylistNotFoundException(playlistId = updatedItemDto.playlistId)
             }
-            val item = playlist.items.find { it.id == updatedItemDto.playlistId }
+            val item = playlist.items.find { it.id == updatedItemDto.playlistItemId }
                 ?: throw PlaylistItemNotFoundException("Playlist item with id $updatedItemDto.id not found")
 
             item.apply {
@@ -55,6 +59,8 @@ class PlaylistItemService(val playlistRepository: PlaylistRepository) {
             }
 
             return playlistRepository.save(playlist).convertToDto()
+        }catch (ex: InvalidFieldValueException){
+            throw ex
         }catch (ex: PlaylistNotFoundException){
             throw ex
         }catch (ex: PlaylistItemNotFoundException){

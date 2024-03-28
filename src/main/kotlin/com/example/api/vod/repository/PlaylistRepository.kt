@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PlaylistRepository : JpaRepository<Playlist, String>
+interface PlaylistRepository : JpaRepository<Playlist, String>{
+}

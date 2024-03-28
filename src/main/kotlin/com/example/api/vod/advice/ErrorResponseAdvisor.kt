@@ -95,4 +95,16 @@ class ErrorResponseAdvisor {
         )
         return ResponseEntity(errorMessage, HttpStatus.NOT_FOUND)
     }
+
+    @ExceptionHandler(
+        InvalidFieldValueException::class
+    )
+    fun handleInvalidFieldValueException(ex: InvalidFieldValueException): ResponseEntity<ErrorMessageDto> {
+        val errorMessage = ErrorMessageDto(
+            HttpStatus.UNPROCESSABLE_ENTITY.name,
+            mutableListOf(ex.message),
+            ex.errorCode,
+        )
+        return ResponseEntity(errorMessage, HttpStatus.UNPROCESSABLE_ENTITY)
+    }
 }

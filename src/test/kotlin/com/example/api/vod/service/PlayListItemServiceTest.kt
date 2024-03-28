@@ -1,10 +1,8 @@
 package com.example.api.vod.service
 
-import com.example.api.vod.exception.FailedToSavePlaylistException
-import com.example.api.vod.exception.FailedToSavePlaylistItemException
-import com.example.api.vod.exception.PlaylistItemNotFoundException
-import com.example.api.vod.exception.PlaylistNotFoundException
+import com.example.api.vod.exception.*
 import com.example.api.vod.fixture.PlaylistFixture
+import com.example.api.vod.fixture.PlaylistFixture.Companion.playListItemUpdateDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playListReorderItemDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlist
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistItem2
@@ -23,6 +21,8 @@ import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
+import java.time.LocalDateTime
+import java.time.ZoneOffset
 import java.util.*
 
 @ExtendWith(MockitoExtension::class)
@@ -130,6 +130,97 @@ class PlayListItemServiceTest {
 
             Mockito.verify(playlistRepository, times(1)).findById(playListReorderItemDto.playlistId)
             Mockito.verify(playlistRepository, times(0)).save(playlistCaptor.capture())
+        }
+    }
+
+    @Nested
+    inner class PlaylistItemUpdateTest{
+
+        @Test
+        fun updatePlaylistItem(){
+
+            val playlistFromDb  = playlist.copy()
+            playlistFromDb.items[0].id = playListItemUpdateDto.playlistItemId
+            whenever(playlistRepository.findById(playListItemUpdateDto.playlistId)).thenReturn(Optional.of(playlistFromDb))
+            whenever(playlistRepository.save(playlistCaptor.capture())).thenReturn(playlist)
+            playlistItemService.updatePlaylistItem(playListItemUpdateDto)
+
+            val actualInvocationOfSave = playlistCaptor.value
+
+            Assertions.assertEquals(playListItemUpdateDto.name, actualInvocationOfSave.items[0].name)
+            Assertions.assertEquals(playListItemUpdateDto.startTime, actualInvocationOfSave.items[0].startTime)
+            Assertions.assertEquals(playListItemUpdateDto.endTime, actualInvocationOfSave.items[0].endTime)
+
+        }
+
+        @Test
+        fun customExceptionOnWrongTimeStamps(){
+
+            val playlistFromDb  = playlist.copy()
+            playlistFromDb.items[0].id = playListItemUpdateDto.playlistItemId
+
+            val updateReqDto = playListItemUpdateDto.copy()
+            updateReqDto.startTime = LocalDateTime.now().toEpochSecond(ZoneOffset.UTC)
+
+           try {
+               playlistItemService.updatePlaylistItem(updateReqDto)
+           }catch (ex: Exception){
+               Assertions.assertEquals(InvalidFieldValueException::class.java, ex.javaClass)
+           }
+        }
+
+        @Test
+        fun customExceptionIfPlaylistNotFound(){
+
+            whenever(playlistRepository.findById(playListItemUpdateDto.playlistId)).thenReturn(Optional.empty())
+
+            try {
+                playlistItemService.updatePlaylistItem(playListItemUpdateDto)
+            }catch (ex: Exception){
+                Assertions.assertEquals(PlaylistNotFoundException::class.java, ex.javaClass)
+            }
+
+            Mockito.verify(playlistRepository, times(1)).findById(playListItemUpdateDto.playlistId)
+            Mockito.verify(playlistRepository, times(0)).save(playlistCaptor.capture())
+
+        }
+
+        @Test
+        fun customExceptionIfPlaylistItemNotFound(){
+
+            val playlistFromDb  = playlist.copy()
+
+            whenever(playlistRepository.findById(playListItemUpdateDto.playlistId)).thenReturn(Optional.of(playlistFromDb))
+
+            try {
+                playlistItemService.updatePlaylistItem(playListItemUpdateDto)
+            }catch (ex: Exception){
+                Assertions.assertEquals(PlaylistItemNotFoundException::class.java, ex.javaClass)
+            }
+
+            Mockito.verify(playlistRepository, times(1)).findById(playListItemUpdateDto.playlistId)
+            Mockito.verify(playlistRepository, times(0)).save(playlistCaptor.capture())
+
+        }
+
+        @Test
+        fun customExceptionPlaylistSaveFailed(){
+
+            val playlistFromDb  = playlist.copy()
+            playlistFromDb.items[0].id = playListItemUpdateDto.playlistItemId
+
+            whenever(playlistRepository.findById(playListItemUpdateDto.playlistId)).thenReturn(Optional.of(playlistFromDb))
+            whenever(playlistRepository.save(playlistCaptor.capture())).thenThrow(RuntimeException())
+
+            try {
+                playlistItemService.updatePlaylistItem(playListItemUpdateDto)
+            }catch (ex: Exception){
+                Assertions.assertEquals(FailedToSavePlaylistItemException::class.java, ex.javaClass)
+            }
+
+            Mockito.verify(playlistRepository, times(1)).findById(playListItemUpdateDto.playlistId)
+            Mockito.verify(playlistRepository, times(1)).save(playlistCaptor.capture())
+
         }
     }
 
