@@ -18,7 +18,7 @@ fun Playlist.convertToDto(): PlaylistDto{
             startTime = it.startTime,
             endTime = it.endTime,
             sequence = it.sequence
-        ) }
+        ) }.toMutableList()
     )
 }
 

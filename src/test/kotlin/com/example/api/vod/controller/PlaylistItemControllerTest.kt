@@ -48,7 +48,7 @@ class PlaylistItemControllerTest {
     ) {
         mockMvc = MockMvcBuilders.standaloneSetup(PlaylistItemController(playlistItemService)).build()
     }
-
+/*
     @Nested
     inner class AddItemsInBatchTest{
 
@@ -89,6 +89,6 @@ class PlaylistItemControllerTest {
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.BAD_REQUEST.value())
 
         }
-    }
+    }*/
 
 }

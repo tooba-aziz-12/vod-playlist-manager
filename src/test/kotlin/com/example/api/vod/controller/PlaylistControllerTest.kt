@@ -1,6 +1,5 @@
 package com.example.api.vod.controller
 
-import com.example.api.vod.fixture.PlaylistFixture.Companion.playlist
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistDto
 import com.example.api.vod.service.PlaylistService
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -49,12 +48,12 @@ class PlaylistControllerTest {
     }
 
     @Nested
-    inner class CreatePlaylist{
+    inner class UpsertPlaylistTest{
 
         @Test
-        fun successfullyPlaylistCreationTest(){
+        fun upsertPlaylist(){
 
-            whenever(playlistService.createPlaylist(playlistDto)).thenReturn(
+            whenever(playlistService.upsertPlaylist(playlistDto)).thenReturn(
                 playlistDto
             )
 
@@ -68,7 +67,7 @@ class PlaylistControllerTest {
                 .andReturn()
 
 
-            Mockito.verify(playlistService, times(1)).createPlaylist(playlistDto)
+            Mockito.verify(playlistService, times(1)).upsertPlaylist(playlistDto)
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.OK.value())
         }
 
@@ -84,7 +83,7 @@ class PlaylistControllerTest {
                 .andReturn()
 
 
-            Mockito.verify(playlistService, times(0)).createPlaylist(playlistDto)
+            Mockito.verify(playlistService, times(0)).upsertPlaylist(playlistDto)
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.BAD_REQUEST.value())
 
         }

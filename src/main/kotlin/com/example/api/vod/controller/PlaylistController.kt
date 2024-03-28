@@ -1,6 +1,5 @@
 package com.example.api.vod.controller
 
-import com.example.api.vod.constant.RequestHeaders
 import com.example.api.vod.dto.PlaylistDto
 import com.example.api.vod.service.PlaylistService
 import org.springframework.web.bind.annotation.*
@@ -13,10 +12,10 @@ class PlaylistController(
 ) {
 
     @PostMapping
-    fun createPlaylist(
+    fun upsertPlaylist(
         @RequestBody playlistDto: PlaylistDto,
     ): PlaylistDto {
-        return playlistService.createPlaylist(playlistDto)
+        return playlistService.upsertPlaylist(playlistDto)
 
     }
 

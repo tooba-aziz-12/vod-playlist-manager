@@ -25,6 +25,10 @@ class PlaylistFixture {
         private const val itemSequence = 1L
 
 
+        val emptyPlaylist = Playlist(
+            name = playlistName,
+        )
+
         val playlist = Playlist(
             name = playlistName,
             ).apply {
@@ -40,6 +44,8 @@ class PlaylistFixture {
             )
         }
 
+        val emptyPlaylistDto = playlist.convertToDto()
+
         val playlistDto =  playlist.convertToDto()
 
         val playlistItem = PlaylistItem(
@@ -51,7 +57,18 @@ class PlaylistFixture {
             sequence = itemSequence
         )
 
+        val playlistItem2 = PlaylistItem(
+            playlist = playlist,
+            name = itemName + "2",
+            videoId = videoId+ "2",
+            startTime = startTime,
+            endTime = endTime,
+            sequence = 2L
+        )
+
         val playlistItemDto = playlistItem.convertToDto()
+
+        val playlistItem2Dto = playlistItem2.convertToDto()
 
         val playListBatchItemDto = PlayListBatchItemDto(
             playlistId = "test-id",

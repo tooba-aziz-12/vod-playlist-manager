@@ -17,50 +17,6 @@ import org.springframework.stereotype.Service
 @Service
 class PlaylistItemService(val playlistRepository: PlaylistRepository) {
 
-    fun addItemToPlaylist(playlistItemDto: PlaylistItemDto): PlaylistDto {
-        try {
-            val playlist = playlistRepository.findById(playlistItemDto.playlistId).orElseThrow {
-                PlaylistNotFoundException(playlistId = playlistItemDto.playlistId)
-            }
-            val newItem = PlaylistItem(
-                playlist = playlist,
-                name = playlistItemDto.name,
-                videoId = playlistItemDto.videoId,
-                startTime = playlistItemDto.startTime,
-                endTime = playlistItemDto.endTime
-            )
-            playlist.items.add(newItem)
-            return playlistRepository.save(playlist).convertToDto()
-        }catch (ex: PlaylistNotFoundException){
-            throw ex
-        } catch (ex: Exception){
-            throw FailedToSavePlaylistItemException(playlistId = playlistItemDto.playlistId)
-        }
-
-    }
-
-    fun addItemsToPlaylist(playListBatchItemDto: PlayListBatchItemDto): PlaylistDto {
-        try {
-            val playlist = playlistRepository.findById(playListBatchItemDto.playlistId).get()
-            val playlistItems = playListBatchItemDto.items.map {
-                PlaylistItem(
-                    playlist = playlist,
-                    name = it.name,
-                    videoId = it.videoId,
-                    startTime = it.startTime,
-                    endTime = it.endTime
-                )
-            }
-            playlist.items.addAll(playlistItems)
-            return playlistRepository.save(playlist).convertToDto()
-        }catch (ex: PlaylistNotFoundException){
-            throw ex
-        } catch (ex: Exception){
-            throw FailedToSavePlaylistItemException(playlistId = playListBatchItemDto.playlistId)
-        }
-
-    }
-
     fun reorderItemsInPlaylist(playListBatchItemDto: PlayListBatchItemDto): PlaylistDto {
         try {
             val playlist = playlistRepository.findById(playListBatchItemDto.playlistId).orElseThrow {

@@ -5,19 +5,19 @@ import com.example.api.vod.model.PlaylistItem
 import jakarta.validation.constraints.NotBlank
 
 data class PlaylistDto(
-    val id: String = "",
+    var id: String = "",
 
     @field:NotBlank(message = "Name cannot be empty")
     val name: String,
 
-    var items: List<PlaylistItemDto> = mutableListOf()
+    var items: MutableList<PlaylistItemDto> = mutableListOf()
 ){
     fun toPlaylist(): Playlist{
         val playlist =  Playlist(
             name = this.name,
         )
         playlist.items = this.items.map {
-            PlaylistItem(
+            val item = PlaylistItem(
                 playlist = playlist,
                 videoId = it.videoId,
                 startTime = it.startTime,
@@ -25,14 +25,22 @@ data class PlaylistDto(
                 name = it.name,
                 sequence = it.sequence
             )
+            if (it.id.isNotBlank()){
+                item.id = it.id
+            }
+            item
         }.toMutableList()
+
+        if (id.isNotBlank()){
+            playlist.id = id
+        }
 
         return playlist
     }
 }
 
 data class PlaylistItemDto(
-    val id: String,
+    var id: String = "",
     val playlistId: String,
     val videoId: String,
     val startTime: Long,

@@ -64,6 +64,7 @@ class ErrorResponseAdvisor {
         FailedToFindPlaylistException::class
     )
     fun handleFailedToFindPlaylistException(ex: FailedToFindPlaylistException): ResponseEntity<ErrorMessageDto> {
+
         val errorMessage = ErrorMessageDto(
             HttpStatus.INTERNAL_SERVER_ERROR.name,
             mutableListOf(ex.message),

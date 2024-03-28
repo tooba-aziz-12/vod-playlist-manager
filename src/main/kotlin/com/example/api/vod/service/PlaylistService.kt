@@ -5,18 +5,15 @@ import com.example.api.vod.exception.FailedToDeletePlaylistException
 import com.example.api.vod.exception.FailedToFindPlaylistException
 import com.example.api.vod.exception.FailedToSavePlaylistException
 import com.example.api.vod.exception.PlaylistNotFoundException
-import com.example.api.vod.model.Playlist
 import com.example.api.vod.model.extension.convertToDto
 import com.example.api.vod.repository.PlaylistRepository
 import org.springframework.stereotype.Service
-import java.util.*
-import kotlin.NoSuchElementException
 
 
 @Service
 class PlaylistService(val playlistRepository: PlaylistRepository) {
 
-    fun createPlaylist(playlistDto: PlaylistDto): PlaylistDto {
+    fun upsertPlaylist(playlistDto: PlaylistDto): PlaylistDto {
         try {
             val playlist = playlistDto.toPlaylist()
             return playlistRepository.save(playlist).convertToDto()
