@@ -1,6 +1,7 @@
 package com.example.api.vod.controller
 
 import com.example.api.vod.fixture.PlaylistFixture
+import com.example.api.vod.fixture.PlaylistFixture.Companion.playListItemUpdateDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playListReorderItemDto
 import com.example.api.vod.service.PlaylistItemService
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -91,6 +92,48 @@ class PlaylistItemControllerTest {
 
 
             Mockito.verify(playlistItemService, times(0)).reorderItemsInPlaylist(requestDto)
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.BAD_REQUEST.value())
+        }
+
+    }
+
+    @Nested
+    inner class UpdatePlaylistItemTest{
+
+        @Test
+        fun updatePlaylistItem(){
+
+            whenever(playlistItemService.updatePlaylistItem(playListItemUpdateDto)).thenReturn(
+                PlaylistFixture.playlistDto
+            )
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.put(BASE_URI)
+                    .content(objectMapper.writeValueAsString(playListItemUpdateDto))
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andReturn()
+
+
+            Mockito.verify(playlistItemService, times(1)).updatePlaylistItem(playListItemUpdateDto)
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.OK.value())
+        }
+
+        @Test
+        fun return400OnBadPayload(){
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.put(BASE_URI)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isBadRequest)
+                .andReturn()
+
+
+            Mockito.verify(playlistItemService, times(0)).updatePlaylistItem(playListItemUpdateDto)
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.BAD_REQUEST.value())
         }
 

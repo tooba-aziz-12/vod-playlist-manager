@@ -1,6 +1,7 @@
 package com.example.api.vod.fixture
 
 import com.example.api.vod.dto.PlayListReorderItemDto
+import com.example.api.vod.dto.PlaylistItemUpdateDto
 import com.example.api.vod.model.Playlist
 import com.example.api.vod.model.PlaylistItem
 import com.example.api.vod.model.extension.convertToDto
@@ -72,6 +73,14 @@ class PlaylistFixture {
         val playListReorderItemDto = PlayListReorderItemDto(
             playlistId = "test-id",
             items = mutableListOf(playlistItemDto, playlistItem2Dto)
+        )
+
+        val playListItemUpdateDto = PlaylistItemUpdateDto(
+            playlistId = "test-playlist-id",
+            playlistItemId = "test-item-id",
+            startTime = startTime,
+            endTime = endTime,
+            name = itemName
         )
 
     }

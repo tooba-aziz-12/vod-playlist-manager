@@ -3,6 +3,7 @@ package com.example.api.vod.service
 import com.example.api.vod.dto.PlayListReorderItemDto
 import com.example.api.vod.dto.PlaylistDto
 import com.example.api.vod.dto.PlaylistItemDto
+import com.example.api.vod.dto.PlaylistItemUpdateDto
 import com.example.api.vod.exception.FailedToSavePlaylistItemException
 import com.example.api.vod.exception.PlaylistItemNotFoundException
 import com.example.api.vod.exception.PlaylistNotFoundException
@@ -39,16 +40,16 @@ class PlaylistItemService(val playlistRepository: PlaylistRepository) {
         }
     }
 
-    fun updatePlaylistItem(updatedItemDto: PlaylistItemDto): PlaylistDto {
+    fun updatePlaylistItem(updatedItemDto: PlaylistItemUpdateDto): PlaylistDto {
         try {
             val playlist = playlistRepository.findById(updatedItemDto.playlistId).orElseThrow {
                 PlaylistNotFoundException(playlistId = updatedItemDto.playlistId)
             }
-            val item = playlist.items.find { it.id == updatedItemDto.id }
+            val item = playlist.items.find { it.id == updatedItemDto.playlistId }
                 ?: throw PlaylistItemNotFoundException("Playlist item with id $updatedItemDto.id not found")
 
             item.apply {
-                videoId = updatedItemDto.videoId
+                name = updatedItemDto.name
                 startTime = updatedItemDto.startTime
                 endTime = updatedItemDto.endTime
             }

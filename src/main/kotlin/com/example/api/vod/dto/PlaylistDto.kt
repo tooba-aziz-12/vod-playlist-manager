@@ -58,3 +58,18 @@ data class PlayListReorderItemDto(
     var playlistId: String,
     val items : List<PlaylistItemDto>
 )
+
+data class PlaylistItemUpdateDto(
+    @field:NotBlank(message = "Playlist id cannot be empty")
+    var playlistId: String,
+
+    @field:NotBlank(message = "Item id cannot be empty")
+    var playlistItemId: String,
+
+    @field:NotBlank(message = "Name cannot be empty")
+    var name: String,
+
+    val startTime: Long,
+
+    val endTime: Long,
+)
