@@ -1,7 +1,9 @@
 package com.example.api.vod.advice
 
+import ch.qos.logback.core.spi.ErrorCodes
 import com.example.api.vod.constant.ErrorCode
 import com.example.api.vod.dto.ErrorMessageDto
+import com.example.api.vod.exception.*
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions
@@ -78,6 +80,60 @@ class ErrorResponseAdvisorTest{
 
     private fun testMethodForMethodArgumentNotValidException(methodParam: String): String {
         return methodParam
+    }
+
+    @Test
+    fun errorResponseFailedToFindPlaylistException() {
+        val exception = FailedToFindPlaylistException("play-list-id")
+        val responseEntity: ResponseEntity<ErrorMessageDto> =
+            errorResponseAdvisor.handleFailedToFindPlaylistException(exception)
+
+        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.statusCode)
+        Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.PLAYLIST_SEARCH_FAILED.name)
+
+    }
+
+    @Test
+    fun errorResponseFailedToSavePlaylistException() {
+        val exception = FailedToSavePlaylistException("play-list-name")
+        val responseEntity: ResponseEntity<ErrorMessageDto> =
+            errorResponseAdvisor.handleFailedToSavePlaylistException(exception)
+
+        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.statusCode)
+        Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.PLAYLIST_SAVE_FAILED.name)
+
+    }
+
+    @Test
+    fun errorResponseFailedToSavePlaylistItemException() {
+        val exception = FailedToSavePlaylistItemException("play-list-name")
+        val responseEntity: ResponseEntity<ErrorMessageDto> =
+            errorResponseAdvisor.handleFailedToSavePlaylistItemException(exception)
+
+        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.statusCode)
+        Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.PLAYLIST_ITEM_SAVE_FAILED.name)
+
+    }
+
+    @Test
+    fun errorResponsePlaylistItemNotFoundException() {
+        val exception = PlaylistItemNotFoundException("play-list-id")
+        val responseEntity: ResponseEntity<ErrorMessageDto> =
+            errorResponseAdvisor.handlePlaylistItemNotFoundException(exception)
+
+        Assertions.assertEquals(HttpStatus.NOT_FOUND, responseEntity.statusCode)
+        Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.PLAYLIST_ITEM_NOT_FOUND.name)
+
+    }
+
+    @Test
+    fun errorResponsePlaylistNotFoundException() {
+        val exception = PlaylistNotFoundException("play-list-id")
+        val responseEntity: ResponseEntity<ErrorMessageDto> =
+            errorResponseAdvisor.handlePlaylistNotFoundException(exception)
+
+        Assertions.assertEquals(HttpStatus.NOT_FOUND, responseEntity.statusCode)
+        Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.PLAYLIST_NOT_FOUND.name)
     }
 
 }

@@ -1,7 +1,6 @@
 package com.example.api.vod.service
 
 import com.example.api.vod.dto.PlaylistDto
-import com.example.api.vod.exception.FailedToDeletePlaylistException
 import com.example.api.vod.exception.FailedToFindPlaylistException
 import com.example.api.vod.exception.FailedToSavePlaylistException
 import com.example.api.vod.exception.PlaylistNotFoundException
