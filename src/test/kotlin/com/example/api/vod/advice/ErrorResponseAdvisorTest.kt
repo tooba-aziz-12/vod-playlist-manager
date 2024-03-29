@@ -148,4 +148,22 @@ class ErrorResponseAdvisorTest{
         Assertions.assertEquals(responseEntity.body!!.message[0], errorMessage)
     }
 
+    @Test
+    fun errorResponseFailedToDeletePlaylistItemException() {
+        val exception = FailedToDeletePlaylistItemException(playlistItemId = "test-item-id", playlistId = "test-playlist-id")
+        val responseEntity: ResponseEntity<ErrorMessageDto> =
+            errorResponseAdvisor.handleFailedToDeletePlaylistItemException(exception)
+
+        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.statusCode)
+        Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.PLAYLIST_ITEM_DELETE_FAILED.name)
+    }
+    @Test
+    fun errorResponseFailedToDeletePlaylistException() {
+        val exception = FailedToDeletePlaylistException(playlistId = "test-playlist-id")
+        val responseEntity: ResponseEntity<ErrorMessageDto> =
+            errorResponseAdvisor.handleFailedToDeletePlaylistException(exception)
+
+        Assertions.assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, responseEntity.statusCode)
+        Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.PLAYLIST_DELETE_FAILED.name)
+    }
 }

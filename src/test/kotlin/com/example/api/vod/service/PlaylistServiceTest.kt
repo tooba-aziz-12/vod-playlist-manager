@@ -1,6 +1,7 @@
 package com.example.api.vod.service
 
 import com.example.api.vod.dto.PlaylistDto
+import com.example.api.vod.exception.FailedToDeletePlaylistException
 import com.example.api.vod.exception.FailedToFindPlaylistException
 import com.example.api.vod.exception.FailedToSavePlaylistException
 import com.example.api.vod.exception.PlaylistNotFoundException
@@ -23,6 +24,7 @@ import org.mockito.Captor
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
+import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 import java.util.*
@@ -251,6 +253,63 @@ class PlaylistServiceTest {
             Mockito.verify(playlistRepository, times(1)).findById(requestId)
 
             Mockito.verify(playlistRepository, times(1)).save(playlistCaptor.capture())
+        }
+
+    }
+
+    @Nested
+    inner class DeletePlaylistTest{
+        val playlistId = "test-playlist-id"
+        @Test
+        fun updatePlaylistName(){
+
+            whenever(playlistRepository.findById(playlistId)).thenReturn(Optional.of(playlist))
+
+            doNothing().whenever(playlistRepository.delete(playlistCaptor.capture()))
+
+            playlistService.deletePlaylist(playlistId)
+
+            Mockito.verify(playlistRepository, times(1)).findById(playlistId)
+
+            Mockito.verify(playlistRepository, times(1)).delete(playlistCaptor.capture())
+
+            Mockito.verify(playlistRepository, times(1)).deleteById(playlistId)
+        }
+
+        @Test
+        fun customExceptionIfNotFound(){
+
+            whenever(playlistRepository.findById(playlistId)).thenReturn(Optional.empty())
+
+
+            try {
+                playlistService.deletePlaylist(playlistId)
+            }catch (ex: Exception){
+                Assertions.assertEquals(PlaylistNotFoundException::class.java, ex.javaClass)
+            }
+
+
+            Mockito.verify(playlistRepository, times(1)).findById(playlistId)
+
+            Mockito.verify(playlistRepository, times(0)).delete(playlistCaptor.capture())
+        }
+
+        @Test
+        fun customExceptionIfSaveFails(){
+
+            whenever(playlistRepository.findById(playlistId)).thenReturn(Optional.of(playlist))
+
+            whenever(playlistRepository.delete(playlistCaptor.capture())).thenThrow(RuntimeException())
+
+            try {
+                playlistService.deletePlaylist(playlistId)
+            }catch (ex: Exception){
+                Assertions.assertEquals(FailedToDeletePlaylistException::class.java, ex.javaClass)
+            }
+
+            Mockito.verify(playlistRepository, times(1)).findById(playlistId)
+
+            Mockito.verify(playlistRepository, times(1)).delete(playlistCaptor.capture())
         }
 
     }

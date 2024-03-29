@@ -107,4 +107,27 @@ class ErrorResponseAdvisor {
         )
         return ResponseEntity(errorMessage, HttpStatus.UNPROCESSABLE_ENTITY)
     }
+    @ExceptionHandler(
+        FailedToDeletePlaylistItemException::class
+    )
+    fun handleFailedToDeletePlaylistItemException(ex: FailedToDeletePlaylistItemException): ResponseEntity<ErrorMessageDto> {
+        val errorMessage = ErrorMessageDto(
+            HttpStatus.INTERNAL_SERVER_ERROR.name,
+            mutableListOf(ex.message),
+            ex.errorCode,
+        )
+        return ResponseEntity(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR)
+    }
+
+    @ExceptionHandler(
+        FailedToDeletePlaylistException::class
+    )
+    fun handleFailedToDeletePlaylistException(ex: FailedToDeletePlaylistException): ResponseEntity<ErrorMessageDto> {
+        val errorMessage = ErrorMessageDto(
+            HttpStatus.INTERNAL_SERVER_ERROR.name,
+            mutableListOf(ex.message),
+            ex.errorCode,
+        )
+        return ResponseEntity(errorMessage, HttpStatus.INTERNAL_SERVER_ERROR)
+    }
 }

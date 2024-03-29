@@ -19,12 +19,16 @@ import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
+import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation
+import org.springframework.restdocs.operation.preprocess.Preprocessors
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.MvcResult
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
 
 
 @ExtendWith(
@@ -45,11 +49,20 @@ class PlaylistItemControllerTest {
     companion object {
         const val BASE_URI = "/v1/playlist/item"
     }
-
     @BeforeEach
     fun setUp(
+        restDocumentation: RestDocumentationContextProvider
     ) {
-        mockMvc = MockMvcBuilders.standaloneSetup(PlaylistItemController(playlistItemService)).build()
+        mockMvc = MockMvcBuilders.standaloneSetup(PlaylistItemController(playlistItemService))
+            .alwaysDo<StandaloneMockMvcBuilder>(
+                MockMvcRestDocumentation.document(
+                    "{class-name}/{method-name}",
+                    Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                    Preprocessors.preprocessResponse(Preprocessors.prettyPrint())
+                )
+            )
+            .apply<StandaloneMockMvcBuilder>(MockMvcRestDocumentation.documentationConfiguration(restDocumentation)).build()
+
     }
 
 

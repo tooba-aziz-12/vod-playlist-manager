@@ -1,10 +1,7 @@
 package com.example.api.vod.service
 
 import com.example.api.vod.dto.*
-import com.example.api.vod.exception.FailedToSavePlaylistItemException
-import com.example.api.vod.exception.InvalidFieldValueException
-import com.example.api.vod.exception.PlaylistItemNotFoundException
-import com.example.api.vod.exception.PlaylistNotFoundException
+import com.example.api.vod.exception.*
 import com.example.api.vod.model.extension.convertToDto
 import com.example.api.vod.repository.PlaylistItemRepository
 import com.example.api.vod.repository.PlaylistRepository
@@ -73,8 +70,14 @@ class PlaylistItemService(
 
     fun deleteItem(deletedItemDto: PlaylistItemDeleteDto) {
 
-        val item  = playlistItemRepository.findByPlaylistIdAndId(deletedItemDto.playlistId, deletedItemDto.playlistItemId)
-            .orElseThrow { PlaylistItemNotFoundException(deletedItemDto.playlistItemId) }
-        playlistItemRepository.delete(item)
+        try {
+            val item  = playlistItemRepository.findByPlaylistIdAndId(deletedItemDto.playlistId, deletedItemDto.playlistItemId)
+                .orElseThrow { PlaylistItemNotFoundException(deletedItemDto.playlistItemId) }
+            playlistItemRepository.delete(item)
+        }catch (ex: PlaylistItemNotFoundException){
+            throw ex
+        }catch (ex: Exception){
+            throw  FailedToDeletePlaylistItemException(playlistId = deletedItemDto.playlistId, playlistItemId = deletedItemDto.playlistItemId)
+        }
     }
 }

@@ -19,8 +19,8 @@ mvn -Dmaven.artifact.threads=10 clean
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.246 s
-[INFO] Finished at: 2024-03-29T13:05:33+05:00
+[INFO] Total time:  0.227 s
+[INFO] Finished at: 2024-03-29T13:08:16+05:00
 [INFO] ------------------------------------------------------------------------
 mvn verify
 [INFO] Scanning for projects...
@@ -81,481 +81,468 @@ mvn verify
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running com.example.api.vod.config.AuditorAwareConfigurationTest
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.382 s - in com.example.api.vod.config.AuditorAwareConfigurationTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.345 s - in com.example.api.vod.config.AuditorAwareConfigurationTest
 [INFO] Running com.example.api.vod.config.PersistenceConfigurationTest
-13:05:50.370 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class org.h2.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44
-13:05:50.462 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
-13:05:50.465 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class org.h2.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44
-[ERROR] Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.303 s <<< FAILURE! - in com.example.api.vod.config.PersistenceConfigurationTest
-[ERROR] platformTransactionManagerTest  Time elapsed: 0.001 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: interface jakarta.persistence.EntityManagerFactory.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [interface jakarta.persistence.EntityManagerFactory, interface java.lang.AutoCloseable]
-	at com.example.api.vod.config.PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest(PersistenceConfigurationTest.kt:70)
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [interface jakarta.persistence.EntityManagerFactory, interface java.lang.AutoCloseable]
-	at com.example.api.vod.config.PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest(PersistenceConfigurationTest.kt:70)
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-	at com.example.api.vod.config.PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest(PersistenceConfigurationTest.kt:70)
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-	at com.example.api.vod.config.PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest(PersistenceConfigurationTest.kt:70)
-
+13:08:32.850 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class org.h2.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7ad041f3
+13:08:32.975 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+13:08:32.980 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class org.h2.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7ad041f3
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.258 s - in com.example.api.vod.config.PersistenceConfigurationTest
 [INFO] Running com.example.api.vod.config.LiquibaseConfigurationTest
-13:05:50.536 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44
-13:05:50.546 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.example.api.vod.config.LiquibaseConfigurationTest
+13:08:33.046 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7ad041f3
+13:08:33.051 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@7ad041f3
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.05 s - in com.example.api.vod.config.LiquibaseConfigurationTest
 [INFO] Running com.example.api.vod.security.config.ApplicationSecurityConfigurationTest
-[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.2 s <<< FAILURE! - in com.example.api.vod.security.config.ApplicationSecurityConfigurationTest
-[ERROR] configureHttpSecurity  Time elapsed: 0 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class org.springframework.security.config.annotation.web.builders.HttpSecurity.
-Can not mock final classes with the following settings :
- - explicit serialization (e.g. withSettings().serializable())
- - extra interfaces (e.g. withSettings().extraInterfaces(...))
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder, class org.springframework.security.config.annotation.AbstractSecurityBuilder, class org.springframework.security.config.annotation.web.builders.HttpSecurity, class java.lang.Object, interface org.springframework.security.config.annotation.web.HttpSecurityBuilder, interface org.springframework.security.config.annotation.SecurityBuilder]
-	at com.example.api.vod.security.config.ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>(ApplicationSecurityConfigurationTest.kt:38)
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder, class org.springframework.security.config.annotation.AbstractSecurityBuilder, class org.springframework.security.config.annotation.web.builders.HttpSecurity, class java.lang.Object, interface org.springframework.security.config.annotation.web.HttpSecurityBuilder, interface org.springframework.security.config.annotation.SecurityBuilder]
-	at com.example.api.vod.security.config.ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>(ApplicationSecurityConfigurationTest.kt:38)
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-	at com.example.api.vod.security.config.ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>(ApplicationSecurityConfigurationTest.kt:38)
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-	at com.example.api.vod.security.config.ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>(ApplicationSecurityConfigurationTest.kt:38)
-
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.506 s - in com.example.api.vod.security.config.ApplicationSecurityConfigurationTest
 [INFO] Running com.example.api.vod.security.filter.PreAuthorizationFilterTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.164 s - in com.example.api.vod.security.filter.PreAuthorizationFilterTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.066 s - in com.example.api.vod.security.filter.PreAuthorizationFilterTest
 [INFO] Running com.example.api.vod.advice.ErrorResponseAdvisorTest
-[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.215 s - in com.example.api.vod.advice.ErrorResponseAdvisorTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.218 s - in com.example.api.vod.advice.ErrorResponseAdvisorTest
 [INFO] Running com.example.api.vod.controller.PlaylistControllerTest
-[ERROR] Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.204 s <<< FAILURE! - in com.example.api.vod.controller.PlaylistControllerTest
-[ERROR] shouldReturn400OnBadPayload  Time elapsed: 0.03 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] upsertPlaylist  Time elapsed: 0.033 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] getPlaylistById  Time elapsed: 0.031 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] shouldReturn405OnEmptyPathVar  Time elapsed: 0.028 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] updatePlaylistName  Time elapsed: 0.028 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] shouldReturn405OnEmptyPathVar  Time elapsed: 0.039 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
+13:08:34.128 [main] INFO org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.0.Final
+13:08:34.173 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:34.173 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:34.173 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:34.177 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:34.178 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:34.178 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:34.178 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:34.185 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:34.186 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:34.333 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:34.339 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:34.339 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:34.339 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:34.339 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:34.339 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:34.494 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistController:
+	{POST [/v1/playlist]}: upsertPlaylist(PlaylistDto)
+	{GET [/v1/playlist/{id}]}: getPlaylist(String)
+	{PATCH [/v1/playlist/{id}/name]}: updatePlaylistName(String,String)
+13:08:34.498 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:35.290 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:35.339 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:35.363 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:35.363 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:35.365 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:35.365 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:35.366 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@73605fde
+13:08:35.366 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@c3acda3
+13:08:35.366 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:35.367 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 3 ms
+13:08:35.407 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - POST "/v1/playlist", parameters={}
+13:08:35.424 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistController#upsertPlaylist(PlaylistDto)
+13:08:35.634 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to []
+13:08:35.654 [main] WARN org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.example.api.vod.dto.PlaylistDto com.example.api.vod.controller.PlaylistController.upsertPlaylist(com.example.api.vod.dto.PlaylistDto)]
+13:08:35.655 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 400 BAD_REQUEST
+13:08:35.663 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:35.663 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:35.663 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:35.663 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:35.663 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:35.663 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:35.663 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:35.663 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:35.663 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:35.664 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:35.664 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:35.665 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:35.665 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:35.665 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:35.665 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:35.666 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistController:
+	{POST [/v1/playlist]}: upsertPlaylist(PlaylistDto)
+	{GET [/v1/playlist/{id}]}: getPlaylist(String)
+	{PATCH [/v1/playlist/{id}/name]}: updatePlaylistName(String,String)
+13:08:35.667 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:35.668 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:35.668 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:35.668 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:35.668 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:35.668 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:35.669 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:35.669 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@4a536b4e
+13:08:35.669 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@70bdc9df
+13:08:35.669 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:35.669 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+13:08:35.687 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - POST "/v1/playlist", parameters={}
+13:08:35.687 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistController#upsertPlaylist(PlaylistDto)
+13:08:35.728 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to [PlaylistDto(id=26NVPF4ctSkvC9UUBoCLYj, name=test-playlist-name, items=[PlaylistItemDto(id=66sqKj7RFB (truncated)...]
+13:08:35.773 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+13:08:35.774 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [PlaylistDto(id=26NVPF4ctSkvC9UUBoCLYj, name=test-playlist-name, items=[PlaylistItemDto(id=66sqKj7RFB (truncated)...]
+13:08:35.783 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+13:08:35.787 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:35.787 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:35.787 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:35.787 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:35.787 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:35.787 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:35.787 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:35.787 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:35.787 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:35.788 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:35.788 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:35.789 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:35.789 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:35.789 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:35.789 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:35.790 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistController:
+	{POST [/v1/playlist]}: upsertPlaylist(PlaylistDto)
+	{GET [/v1/playlist/{id}]}: getPlaylist(String)
+	{PATCH [/v1/playlist/{id}/name]}: updatePlaylistName(String,String)
+13:08:35.791 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:35.792 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:35.792 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:35.792 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:35.792 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:35.792 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:35.792 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:35.792 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@5406ce9f
+13:08:35.792 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@15be8dc4
+13:08:35.792 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:35.792 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+13:08:35.793 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - GET "/v1/playlist/test-id", parameters={}
+13:08:35.793 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistController#getPlaylist(String)
+13:08:35.798 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+13:08:35.798 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [PlaylistDto(id=26NVPF4ctSkvC9UUBoCLYj, name=test-playlist-name, items=[PlaylistItemDto(id=66sqKj7RFB (truncated)...]
+13:08:35.800 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+13:08:35.802 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:35.802 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:35.802 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:35.803 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:35.803 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:35.803 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:35.803 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:35.803 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:35.803 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:35.804 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:35.804 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:35.804 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:35.804 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:35.804 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:35.804 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:35.806 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistController:
+	{POST [/v1/playlist]}: upsertPlaylist(PlaylistDto)
+	{GET [/v1/playlist/{id}]}: getPlaylist(String)
+	{PATCH [/v1/playlist/{id}/name]}: updatePlaylistName(String,String)
+13:08:35.806 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:35.807 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:35.807 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:35.807 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:35.807 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:35.807 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:35.807 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:35.807 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@37095cad
+13:08:35.807 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@2e2662d8
+13:08:35.807 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:35.808 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+13:08:35.808 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - GET "/v1/playlist", parameters={}
+13:08:35.810 [main] WARN org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' is not supported]
+13:08:35.810 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 405 METHOD_NOT_ALLOWED
+13:08:35.813 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:35.813 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:35.813 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:35.813 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:35.813 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:35.814 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:35.814 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:35.814 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:35.814 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:35.815 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:35.815 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:35.815 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:35.815 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:35.815 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:35.815 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:35.816 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistController:
+	{POST [/v1/playlist]}: upsertPlaylist(PlaylistDto)
+	{GET [/v1/playlist/{id}]}: getPlaylist(String)
+	{PATCH [/v1/playlist/{id}/name]}: updatePlaylistName(String,String)
+13:08:35.816 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:35.817 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:35.817 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:35.818 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:35.818 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:35.818 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:35.818 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:35.818 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3086155a
+13:08:35.818 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@4c68550d
+13:08:35.818 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:35.818 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+13:08:35.818 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - PATCH "/v1/playlist/test-id/name", parameters={masked}
+13:08:35.818 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistController#updatePlaylistName(String, String)
+13:08:35.822 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+13:08:35.822 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [PlaylistDto(id=26NVPF4ctSkvC9UUBoCLYj, name=test-playlist-name, items=[PlaylistItemDto(id=66sqKj7RFB (truncated)...]
+13:08:35.824 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+13:08:35.826 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:35.826 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:35.826 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:35.826 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:35.826 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:35.826 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:35.826 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:35.826 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:35.826 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:35.827 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:35.827 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:35.827 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:35.827 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:35.827 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:35.827 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:35.829 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistController:
+	{POST [/v1/playlist]}: upsertPlaylist(PlaylistDto)
+	{GET [/v1/playlist/{id}]}: getPlaylist(String)
+	{PATCH [/v1/playlist/{id}/name]}: updatePlaylistName(String,String)
+13:08:35.829 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:35.830 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:35.830 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:35.830 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:35.830 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:35.830 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:35.830 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:35.830 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@11138809
+13:08:35.830 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@16374086
+13:08:35.830 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:35.831 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+13:08:35.831 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - PATCH "/v1/playlist", parameters={}
+13:08:35.831 [main] WARN org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PATCH' is not supported]
+13:08:35.831 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 405 METHOD_NOT_ALLOWED
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.94 s - in com.example.api.vod.controller.PlaylistControllerTest
 [INFO] Running com.example.api.vod.controller.PlaylistItemControllerTest
-[ERROR] Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.216 s <<< FAILURE! - in com.example.api.vod.controller.PlaylistItemControllerTest
-[ERROR] reorderPlaylist  Time elapsed: 0.041 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] return400OnBadPayload  Time elapsed: 0.03 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] updatePlaylistItem  Time elapsed: 0.031 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] return400OnBadPayload  Time elapsed: 0.032 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] deletePlaylistItem  Time elapsed: 0.033 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
-[ERROR] return400OnBadPayload  Time elapsed: 0.033 s  <<< ERROR!
-org.mockito.exceptions.base.MockitoException: 
-
-Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
-
-If you're not sure why you're getting this error, please open an issue on GitHub.
-
-
-Java               : 21
-JVM vendor name    : Homebrew
-JVM vendor version : 21.0.1
-JVM name           : OpenJDK 64-Bit Server VM
-JVM version        : 21.0.1
-JVM info           : mixed mode, sharing
-OS name            : Mac OS X
-OS version         : 12.5
-
-
-You are seeing this disclaimer because Mockito is configured to create inlined mocks.
-You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
-
-Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
-Caused by: java.lang.IllegalStateException: 
-
-Byte Buddy could not instrument all classes within the mock's type hierarchy
-
-This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
- - Compiled by older versions of scalac
- - Classes that are part of the Android distribution
-Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
-
+13:08:35.859 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:35.859 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:35.859 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:35.860 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:35.860 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:35.860 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:35.860 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:35.860 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:35.860 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:35.861 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:35.861 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:35.861 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:35.861 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:35.861 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:35.861 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:35.865 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistItemController:
+	{PUT [/v1/playlist/item/reorder]}: reorderItemsInPlaylist(PlayListReorderItemDto)
+	{PUT [/v1/playlist/item]}: updatePlaylistItem(PlaylistItemUpdateDto)
+	{DELETE [/v1/playlist/item]}: deletePlaylistItem(PlaylistItemDeleteDto)
+13:08:35.866 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:35.867 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:35.867 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:35.867 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:35.867 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:35.867 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:35.867 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:35.867 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@30081ff4
+13:08:35.867 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@34dcad0d
+13:08:35.867 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:35.867 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+13:08:35.870 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - PUT "/v1/playlist/item/reorder", parameters={}
+13:08:35.870 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistItemController#reorderItemsInPlaylist(PlayListReorderItemDto)
+13:08:35.877 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to [PlayListReorderItemDto(playlistId=test-id, items=[PlaylistItemDto(id=1W7tFhJLkHFS3n1VEcnUN2, playlis (truncated)...]
+13:08:35.961 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+13:08:35.962 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [PlaylistDto(id=26NVPF4ctSkvC9UUBoCLYj, name=test-playlist-name, items=[PlaylistItemDto(id=66sqKj7RFB (truncated)...]
+13:08:35.963 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+13:08:35.965 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:35.965 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:35.965 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:35.965 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:35.965 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:35.966 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:35.966 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:35.966 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:35.966 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:35.967 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:35.967 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:35.967 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:35.967 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:35.967 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:35.967 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:35.968 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistItemController:
+	{PUT [/v1/playlist/item/reorder]}: reorderItemsInPlaylist(PlayListReorderItemDto)
+	{PUT [/v1/playlist/item]}: updatePlaylistItem(PlaylistItemUpdateDto)
+	{DELETE [/v1/playlist/item]}: deletePlaylistItem(PlaylistItemDeleteDto)
+13:08:35.968 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:35.970 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:35.970 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:35.970 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:35.970 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:35.970 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:35.970 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:35.970 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@15bb197
+13:08:35.970 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@3313002e
+13:08:35.970 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:35.970 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+13:08:35.972 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - PUT "/v1/playlist/item/reorder", parameters={}
+13:08:35.972 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistItemController#reorderItemsInPlaylist(PlayListReorderItemDto)
+13:08:35.975 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to [PlayListReorderItemDto(playlistId=, items=[PlaylistItemDto(id=1W7tFhJLkHFS3n1VEcnUN2, playlistId=26N (truncated)...]
+13:08:36.004 [main] WARN org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.example.api.vod.dto.PlaylistDto com.example.api.vod.controller.PlaylistItemController.reorderItemsInPlaylist(com.example.api.vod.dto.PlayListReorderItemDto): [Field error in object 'playListReorderItemDto' on field 'playlistId': rejected value []; codes [NotBlank.playListReorderItemDto.playlistId,NotBlank.playlistId,NotBlank.java.lang.String,NotBlank]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [playListReorderItemDto.playlistId,playlistId]; arguments []; default message [playlistId]]; default message [Name cannot be empty]] ]
+13:08:36.004 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 400 BAD_REQUEST
+13:08:36.007 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:36.007 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:36.007 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:36.007 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:36.007 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:36.007 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:36.007 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:36.007 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:36.007 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:36.008 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:36.008 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:36.008 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:36.008 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:36.009 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:36.009 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:36.010 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistItemController:
+	{PUT [/v1/playlist/item/reorder]}: reorderItemsInPlaylist(PlayListReorderItemDto)
+	{PUT [/v1/playlist/item]}: updatePlaylistItem(PlaylistItemUpdateDto)
+	{DELETE [/v1/playlist/item]}: deletePlaylistItem(PlaylistItemDeleteDto)
+13:08:36.010 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:36.011 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:36.011 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:36.011 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:36.011 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:36.011 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:36.011 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:36.011 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@3dd6a612
+13:08:36.011 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@41c6fd41
+13:08:36.011 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:36.011 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+13:08:36.013 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - PUT "/v1/playlist/item", parameters={}
+13:08:36.013 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistItemController#updatePlaylistItem(PlaylistItemUpdateDto)
+13:08:36.019 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to [PlaylistItemUpdateDto(playlistId=test-playlist-id, playlistItemId=test-item-id, name=test-playlist-i (truncated)...]
+13:08:36.021 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+13:08:36.021 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Writing [PlaylistDto(id=26NVPF4ctSkvC9UUBoCLYj, name=test-playlist-name, items=[PlaylistItemDto(id=66sqKj7RFB (truncated)...]
+13:08:36.022 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+13:08:36.024 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:36.024 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:36.025 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:36.025 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:36.025 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:36.025 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:36.025 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:36.025 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:36.025 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:36.026 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:36.026 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:36.026 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:36.026 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:36.026 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:36.026 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:36.027 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistItemController:
+	{PUT [/v1/playlist/item/reorder]}: reorderItemsInPlaylist(PlayListReorderItemDto)
+	{PUT [/v1/playlist/item]}: updatePlaylistItem(PlaylistItemUpdateDto)
+	{DELETE [/v1/playlist/item]}: deletePlaylistItem(PlaylistItemDeleteDto)
+13:08:36.028 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:36.029 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:36.029 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:36.029 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:36.029 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:36.029 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:36.029 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:36.029 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7b601e55
+13:08:36.029 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@26309e6f
+13:08:36.029 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:36.029 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+13:08:36.029 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - PUT "/v1/playlist/item", parameters={}
+13:08:36.029 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistItemController#updatePlaylistItem(PlaylistItemUpdateDto)
+13:08:36.031 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to []
+13:08:36.031 [main] WARN org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public com.example.api.vod.dto.PlaylistDto com.example.api.vod.controller.PlaylistItemController.updatePlaylistItem(com.example.api.vod.dto.PlaylistItemUpdateDto)]
+13:08:36.031 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 400 BAD_REQUEST
+13:08:36.034 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:36.034 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:36.034 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:36.034 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:36.034 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:36.034 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:36.034 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:36.034 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:36.034 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:36.035 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:36.035 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:36.035 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:36.035 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:36.035 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:36.035 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:36.037 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistItemController:
+	{PUT [/v1/playlist/item/reorder]}: reorderItemsInPlaylist(PlayListReorderItemDto)
+	{PUT [/v1/playlist/item]}: updatePlaylistItem(PlaylistItemUpdateDto)
+	{DELETE [/v1/playlist/item]}: deletePlaylistItem(PlaylistItemDeleteDto)
+13:08:36.037 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:36.038 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:36.038 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:36.038 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:36.038 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:36.038 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:36.038 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:36.038 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2eb3e87c
+13:08:36.038 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@7b362c16
+13:08:36.038 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:36.038 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+13:08:36.040 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - DELETE "/v1/playlist/item", parameters={}
+13:08:36.041 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistItemController#deletePlaylistItem(PlaylistItemDeleteDto)
+13:08:36.044 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to [PlaylistItemDeleteDto(playlistId=test-playlist, playlistItemId=test-item)]
+13:08:36.045 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Using 'application/json', given [application/json] and supported [application/json, application/*+json]
+13:08:36.045 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Nothing to write: null body
+13:08:36.045 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 200 OK
+13:08:36.047 [main] DEBUG org.hibernate.validator.messageinterpolation.ResourceBundleMessageInterpolator - Loaded expression factory via original TCCL
+13:08:36.047 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom MessageInterpolator of type org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator
+13:08:36.047 [main] DEBUG org.hibernate.validator.internal.engine.AbstractConfigurationImpl - Setting custom ParameterNameProvider of type org.springframework.validation.beanvalidation.LocalValidatorFactoryBean$1
+13:08:36.047 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - Trying to load META-INF/validation.xml for XML based Validator configuration.
+13:08:36.047 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via TCCL
+13:08:36.047 [main] DEBUG org.hibernate.validator.internal.xml.config.ResourceLoaderHelper - Trying to load META-INF/validation.xml via Hibernate Validator's class loader
+13:08:36.047 [main] DEBUG org.hibernate.validator.internal.xml.config.ValidationXmlParser - No META-INF/validation.xml found. Using annotation based configuration only.
+13:08:36.047 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Found jakarta.persistence.Persistence on classpath containing 'getPersistenceUtil'. Assuming JPA 2 environment. Trying to instantiate JPA aware TraversableResolver
+13:08:36.047 [main] DEBUG org.hibernate.validator.internal.engine.resolver.TraversableResolvers - Instantiated JPA aware TraversableResolver of type org.hibernate.validator.internal.engine.resolver.JPATraversableResolver.
+13:08:36.048 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000252: Using org.hibernate.validator.internal.engine.DefaultPropertyNodeNameProvider as property node name provider.
+13:08:36.048 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.springframework.validation.beanvalidation.LocaleContextMessageInterpolator as ValidatorFactory-scoped message interpolator.
+13:08:36.048 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.resolver.JPATraversableResolver as ValidatorFactory-scoped traversable resolver.
+13:08:36.048 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.util.ExecutableParameterNameProvider as ValidatorFactory-scoped parameter name provider.
+13:08:36.048 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.DefaultClockProvider as ValidatorFactory-scoped clock provider.
+13:08:36.048 [main] DEBUG org.hibernate.validator.internal.engine.ValidatorFactoryConfigurationHelper - HV000234: Using org.hibernate.validator.internal.engine.scripting.DefaultScriptEvaluatorFactory as ValidatorFactory-scoped script evaluator factory.
+13:08:36.050 [main] DEBUG _org.springframework.web.servlet.HandlerMapping.Mappings - 
+	c.e.a.v.c.PlaylistItemController:
+	{PUT [/v1/playlist/item/reorder]}: reorderItemsInPlaylist(PlayListReorderItemDto)
+	{PUT [/v1/playlist/item]}: updatePlaylistItem(PlaylistItemUpdateDto)
+	{DELETE [/v1/playlist/item]}: deletePlaylistItem(PlaylistItemDeleteDto)
+13:08:36.050 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - 3 mappings in org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
+13:08:36.051 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+13:08:36.051 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+13:08:36.051 [main] INFO org.springframework.mock.web.MockServletContext - Initializing Spring TestDispatcherServlet ''
+13:08:36.051 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+13:08:36.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected AcceptHeaderLocaleResolver
+13:08:36.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected FixedThemeResolver
+13:08:36.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@7d7fc466
+13:08:36.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@6840f38e
+13:08:36.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+13:08:36.051 [main] INFO org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+13:08:36.051 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - DELETE "/v1/playlist/item", parameters={}
+13:08:36.051 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping - Mapped to com.example.api.vod.controller.PlaylistItemController#deletePlaylistItem(PlaylistItemDeleteDto)
+13:08:36.052 [main] DEBUG org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor - Read "application/json" to []
+13:08:36.053 [main] WARN org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: Required request body is missing: public void com.example.api.vod.controller.PlaylistItemController.deletePlaylistItem(com.example.api.vod.dto.PlaylistItemDeleteDto)]
+13:08:36.053 [main] DEBUG org.springframework.test.web.servlet.TestDispatcherServlet - Completed 400 BAD_REQUEST
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.219 s - in com.example.api.vod.controller.PlaylistItemControllerTest
 [INFO] Running com.example.api.vod.VodPlaylistManagerApplicationTests
-13:05:51.756 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [VodPlaylistManagerApplicationTests]: using SpringBootContextLoader
-13:05:51.757 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.api.vod.VodPlaylistManagerApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-13:05:51.758 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.api.vod.VodPlaylistManagerApplicationTests]: VodPlaylistManagerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-13:05:51.791 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using ContextCustomizers for test class [VodPlaylistManagerApplicationTests]: [ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
-13:05:51.886 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/classes/com/example/api/vod/VodPlaylistManagerApplication.class]
-13:05:51.887 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.api.vod.VodPlaylistManagerApplication for test class com.example.api.vod.VodPlaylistManagerApplicationTests
-13:05:52.014 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners for test class [VodPlaylistManagerApplicationTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, WithSecurityContextTestExecutionListener, ReactorContextTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
-13:05:52.015 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: class [VodPlaylistManagerApplicationTests], class annotated with @DirtiesContext [false] with mode [null]
+13:08:36.088 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [VodPlaylistManagerApplicationTests]: using SpringBootContextLoader
+13:08:36.090 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.api.vod.VodPlaylistManagerApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+13:08:36.091 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.api.vod.VodPlaylistManagerApplicationTests]: VodPlaylistManagerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:08:36.112 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using ContextCustomizers for test class [VodPlaylistManagerApplicationTests]: [ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
+13:08:36.188 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/classes/com/example/api/vod/VodPlaylistManagerApplication.class]
+13:08:36.189 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.api.vod.VodPlaylistManagerApplication for test class com.example.api.vod.VodPlaylistManagerApplicationTests
+13:08:36.265 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners for test class [VodPlaylistManagerApplicationTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, WithSecurityContextTestExecutionListener, ReactorContextTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
+13:08:36.265 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: class [VodPlaylistManagerApplicationTests], class annotated with @DirtiesContext [false] with mode [null]
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -565,85 +552,79 @@ Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by 
  =========|_|==============|___/=/_/_/_/
  :: Spring Boot ::                (v3.0.1)
 
-2024-03-29T13:05:52.412+05:00  INFO 18255 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : Starting VodPlaylistManagerApplicationTests using Java 21.0.1 with PID 18255 (started by toobaaziz in /Users/toobaaziz/IdeaProjects/vod-playlist-manager)
-2024-03-29T13:05:52.414+05:00  INFO 18255 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : No active profile set, falling back to 1 default profile: "default"
-2024-03-29T13:05:52.846+05:00  INFO 18255 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-29T13:05:52.892+05:00  INFO 18255 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
-2024-03-29T13:05:53.760+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-03-29T13:05:55.674+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@55398902
-2024-03-29T13:05:55.676+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-03-29T13:05:55.929+05:00  INFO 18255 --- [           main] liquibase.lockservice                    : Successfully acquired change log lock
-2024-03-29T13:05:56.177+05:00  INFO 18255 --- [           main] liquibase.changelog                      : Reading from vod_db.DATABASECHANGELOG
-2024-03-29T13:05:56.226+05:00  INFO 18255 --- [           main] liquibase.lockservice                    : Successfully released change log lock
-2024-03-29T13:05:56.307+05:00  INFO 18255 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: vod]
-2024-03-29T13:05:56.366+05:00  INFO 18255 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.6.Final
-2024-03-29T13:05:56.402+05:00  WARN 18255 --- [           main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
-2024-03-29T13:05:56.545+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
-2024-03-29T13:05:56.557+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@707f4505
-2024-03-29T13:05:56.557+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
-2024-03-29T13:05:56.587+05:00  INFO 18255 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
-2024-03-29T13:05:57.270+05:00  INFO 18255 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-29T13:05:57.280+05:00  INFO 18255 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'vod'
-2024-03-29T13:05:58.115+05:00  WARN 18255 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-29T13:05:58.133+05:00  WARN 18255 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+2024-03-29T13:08:36.598+05:00  INFO 18492 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : Starting VodPlaylistManagerApplicationTests using Java 17.0.7 with PID 18492 (started by toobaaziz in /Users/toobaaziz/IdeaProjects/vod-playlist-manager)
+2024-03-29T13:08:36.598+05:00  INFO 18492 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T13:08:36.963+05:00  INFO 18492 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-29T13:08:37.004+05:00  INFO 18492 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 2 JPA repository interfaces.
+2024-03-29T13:08:37.522+05:00  INFO 18492 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-29T13:08:37.827+05:00  INFO 18492 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ff55ec8
+2024-03-29T13:08:37.828+05:00  INFO 18492 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-29T13:08:38.068+05:00  INFO 18492 --- [           main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-03-29T13:08:38.304+05:00  INFO 18492 --- [           main] liquibase.changelog                      : Reading from vod_db.DATABASECHANGELOG
+2024-03-29T13:08:38.346+05:00  INFO 18492 --- [           main] liquibase.lockservice                    : Successfully released change log lock
+2024-03-29T13:08:38.412+05:00  INFO 18492 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: vod]
+2024-03-29T13:08:38.467+05:00  INFO 18492 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.6.Final
+2024-03-29T13:08:38.499+05:00  WARN 18492 --- [           main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2024-03-29T13:08:38.636+05:00  INFO 18492 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-03-29T13:08:38.654+05:00  INFO 18492 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7164d7de
+2024-03-29T13:08:38.654+05:00  INFO 18492 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-03-29T13:08:38.687+05:00  INFO 18492 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-03-29T13:08:39.243+05:00  INFO 18492 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-29T13:08:39.253+05:00  INFO 18492 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'vod'
+2024-03-29T13:08:39.989+05:00  WARN 18492 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-29T13:08:40.003+05:00  WARN 18492 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
 
-Using generated security password: 87840c5d-f6ff-469b-9dbf-b7d1714c641c
+Using generated security password: e4a71571-ee19-46bf-84ed-039849c6c014
 
 This generated password is for development use only. Your security configuration must be updated before running your application in production.
 
-2024-03-29T13:05:58.371+05:00  INFO 18255 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5de10f47, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@769e210b, org.springframework.security.web.context.SecurityContextHolderFilter@3d80a80e, org.springframework.security.web.header.HeaderWriterFilter@3f8fb7be, org.springframework.web.filter.CorsFilter@527c7ee1, org.springframework.security.web.authentication.logout.LogoutFilter@1f26bd2a, com.example.api.vod.security.filter.PreAuthorizationFilter@16534841, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c230867, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ca43c14, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6a78192c, org.springframework.security.web.session.SessionManagementFilter@6d51fcfb, org.springframework.security.web.access.ExceptionTranslationFilter@574b6cf, org.springframework.security.web.access.intercept.AuthorizationFilter@2af259c3]
-2024-03-29T13:05:58.619+05:00  INFO 18255 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : Started VodPlaylistManagerApplicationTests in 6.57 seconds (process running for 15.36)
-[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.002 s - in com.example.api.vod.VodPlaylistManagerApplicationTests
+2024-03-29T13:08:40.174+05:00  INFO 18492 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@25756aca, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5b62b4d1, org.springframework.security.web.context.SecurityContextHolderFilter@4bad1fdf, org.springframework.security.web.header.HeaderWriterFilter@26d46bd3, org.springframework.web.filter.CorsFilter@4dbdac83, org.springframework.security.web.authentication.logout.LogoutFilter@48f67c41, com.example.api.vod.security.filter.PreAuthorizationFilter@1be323ce, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d443374, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71cfe650, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@663b588c, org.springframework.security.web.session.SessionManagementFilter@45e4f216, org.springframework.security.web.access.ExceptionTranslationFilter@166eb657, org.springframework.security.web.access.intercept.AuthorizationFilter@7b2a10e8]
+2024-03-29T13:08:40.362+05:00  INFO 18492 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : Started VodPlaylistManagerApplicationTests in 4.067 seconds (process running for 14.612)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.314 s - in com.example.api.vod.VodPlaylistManagerApplicationTests
 [INFO] Running com.example.api.vod.model.BaseEntityTest
-[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.example.api.vod.model.BaseEntityTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.example.api.vod.model.BaseEntityTest
 [INFO] Running com.example.api.vod.service.PlaylistServiceTest
-[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s - in com.example.api.vod.service.PlaylistServiceTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s - in com.example.api.vod.service.PlaylistServiceTest
 [INFO] Running com.example.api.vod.service.PlayListItemServiceTest
-[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in com.example.api.vod.service.PlayListItemServiceTest
-2024-03-29T13:05:58.800+05:00  INFO 18255 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'vod'
-2024-03-29T13:05:58.937+05:00  INFO 18255 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
-2024-03-29T13:05:58.943+05:00  INFO 18255 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
-2024-03-29T13:05:58.943+05:00  INFO 18255 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-03-29T13:05:58.951+05:00  INFO 18255 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 s - in com.example.api.vod.service.PlayListItemServiceTest
+2024-03-29T13:08:40.495+05:00  INFO 18492 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'vod'
+2024-03-29T13:08:40.644+05:00  INFO 18492 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-03-29T13:08:40.650+05:00  INFO 18492 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-03-29T13:08:40.650+05:00  INFO 18492 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-29T13:08:40.653+05:00  INFO 18492 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
 [INFO] 
 [INFO] Results:
 [INFO] 
-[ERROR] Errors: 
-[ERROR]   PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest:70 Mockito
-[ERROR]   PlaylistControllerTest$GetPlaylistTest.getPlaylistById » Mockito 
-Mockito cann...
-[ERROR]   PlaylistControllerTest$GetPlaylistTest.shouldReturn405OnEmptyPathVar » Mockito
-[ERROR]   PlaylistControllerTest$UpdatePlaylistNameTest.shouldReturn405OnEmptyPathVar » Mockito
-[ERROR]   PlaylistControllerTest$UpdatePlaylistNameTest.updatePlaylistName » Mockito 
-Mo...
-[ERROR]   PlaylistControllerTest$UpsertPlaylistTest.shouldReturn400OnBadPayload » Mockito
-[ERROR]   PlaylistControllerTest$UpsertPlaylistTest.upsertPlaylist » Mockito 
-Mockito ca...
-[ERROR]   PlaylistItemControllerTest$DeletePlaylistItemTest.deletePlaylistItem » Mockito
-[ERROR]   PlaylistItemControllerTest$DeletePlaylistItemTest.return400OnBadPayload » Mockito
-[ERROR]   PlaylistItemControllerTest$ReorderPlaylistItemTest.reorderPlaylist » Mockito 
-...
-[ERROR]   PlaylistItemControllerTest$ReorderPlaylistItemTest.return400OnBadPayload » Mockito
-[ERROR]   PlaylistItemControllerTest$UpdatePlaylistItemTest.return400OnBadPayload » Mockito
-[ERROR]   PlaylistItemControllerTest$UpdatePlaylistItemTest.updatePlaylistItem » Mockito
-[ERROR]   ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>:38 Mockito
+[INFO] Tests run: 58, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
-[ERROR] Tests run: 58, Failures: 0, Errors: 14, Skipped: 0
 [INFO] 
+[INFO] --- jacoco:0.8.8:report (report) @ spring-boot-kotlin-starter-service ---
+[INFO] Loading execution data file /Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/jacoco.exec
+[INFO] Analyzed bundle 'vod_playlist_manager' with 33 classes
+[INFO] 
+[INFO] --- asciidoctor:2.2.1:process-asciidoc (generate-docs) @ spring-boot-kotlin-starter-service ---
+[INFO] sourceDirectory /Users/toobaaziz/IdeaProjects/vod-playlist-manager/src/docs/asciidoc does not exist
+[INFO] sourceDirectory /Users/toobaaziz/IdeaProjects/vod-playlist-manager/src/asciidoc does not exist
+[INFO] sourceDirectory /Users/toobaaziz/IdeaProjects/vod-playlist-manager/src/main/asciidoc does not exist
+[INFO] No sourceDirectory found. Skipping processing
+[INFO] 
+[INFO] --- resources:2.7:copy-resources (copy-resources) @ spring-boot-kotlin-starter-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/generated-docs
+[INFO] 
+[INFO] --- jar:3.3.0:jar (default-jar) @ spring-boot-kotlin-starter-service ---
+[INFO] Building jar: /Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/spring-boot-kotlin-starter-service-0.0.1-SNAPSHOT.jar
+[INFO] 
+[INFO] --- spring-boot:3.0.1:repackage (repackage) @ spring-boot-kotlin-starter-service ---
+[INFO] Replacing main artifact with repackaged archive
+[INFO] 
+[INFO] --- jacoco:0.8.8:check (jacoco-check) @ spring-boot-kotlin-starter-service ---
+[INFO] Loading execution data file /Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/jacoco.exec
+[INFO] Analyzed bundle 'spring-boot-kotlin-starter-service' with 33 classes
+[INFO] All coverage checks have been met.
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
+[INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  24.652 s
-[INFO] Finished at: 2024-03-29T13:05:59+05:00
+[INFO] Total time:  24.181 s
+[INFO] Finished at: 2024-03-29T13:08:41+05:00
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project spring-boot-kotlin-starter-service: There are test failures.
-[ERROR] 
-[ERROR] Please refer to /Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/surefire-reports for the individual test results.
-[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
-[ERROR] -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

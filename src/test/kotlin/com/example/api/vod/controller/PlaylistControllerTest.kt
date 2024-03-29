@@ -12,16 +12,21 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
 import org.mockito.kotlin.any
+import org.mockito.kotlin.doNothing
 import org.mockito.kotlin.times
 import org.mockito.kotlin.whenever
 import org.springframework.http.HttpStatus
 import org.springframework.http.MediaType
+import org.springframework.restdocs.RestDocumentationContextProvider
 import org.springframework.restdocs.RestDocumentationExtension
+import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation
+import org.springframework.restdocs.operation.preprocess.Preprocessors
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.MvcResult
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 import org.springframework.test.web.servlet.setup.MockMvcBuilders
+import org.springframework.test.web.servlet.setup.StandaloneMockMvcBuilder
 
 @ExtendWith(
     *arrayOf(
@@ -44,8 +49,18 @@ class PlaylistControllerTest {
 
     @BeforeEach
     fun setUp(
+        restDocumentation: RestDocumentationContextProvider
     ) {
-        mockMvc = MockMvcBuilders.standaloneSetup(PlaylistController(playlistService)).build()
+        mockMvc = MockMvcBuilders.standaloneSetup(PlaylistController(playlistService))
+            .alwaysDo<StandaloneMockMvcBuilder>(
+                MockMvcRestDocumentation.document(
+                    "{class-name}/{method-name}",
+                    Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
+                    Preprocessors.preprocessResponse(Preprocessors.prettyPrint())
+                )
+            )
+            .apply<StandaloneMockMvcBuilder>(MockMvcRestDocumentation.documentationConfiguration(restDocumentation)).build()
+
     }
 
     @Nested
@@ -174,6 +189,48 @@ class PlaylistControllerTest {
 
 
             Mockito.verify(playlistService, times(0)).updatePlaylistName(any(), any())
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.METHOD_NOT_ALLOWED.value())
+
+        }
+    }
+
+
+    @Nested
+    inner class DeletePlaylistTest{
+        private val playlistId = "test-id"
+
+        @Test
+        fun deletePlaylist(){
+
+
+            doNothing().whenever(playlistService).deletePlaylist(playlistId)
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.delete("$BASE_URI/$playlistId")
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isOk)
+                .andReturn()
+
+
+            Mockito.verify(playlistService, times(1)).deletePlaylist(playlistId)
+            Assertions.assertEquals(mvcResult.response.status, HttpStatus.OK.value())
+        }
+
+        @Test
+        fun shouldReturn405OnEmptyPathVar(){
+
+            val mvcResult: MvcResult = mockMvc.perform(
+                MockMvcRequestBuilders.delete(BASE_URI)
+                    .contentType(MediaType.APPLICATION_JSON)
+                    .accept(MediaType.APPLICATION_JSON)
+            )
+                .andExpect(MockMvcResultMatchers.status().isMethodNotAllowed)
+                .andReturn()
+
+
+            Mockito.verify(playlistService, times(0)).deletePlaylist(any())
             Assertions.assertEquals(mvcResult.response.status, HttpStatus.METHOD_NOT_ALLOWED.value())
 
         }

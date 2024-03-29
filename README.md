@@ -28,6 +28,22 @@ Unit tests follow industry best practices, including clear and descriptive test 
 ## - Future Considerations
 As the project evolves, unit tests will continue to play a crucial role in validating new features and preventing regressions. Regular review and refinement of unit tests will be conducted to adapt to changes in requirements and maintain optimal code quality.
 
+# - Documentation Generation
+Upon running the test cases, Spring REST Docs automatically generates snippets containing the documentation for each API endpoint. These snippets are stored in the target/generated-snippets directory.
+Command to run all tests: mvn clean verify
+
+## - Accessibility
+The generated API documentation is easily accessible and can be viewed directly from the project's target/generated-snippets directory. Alternatively, it can be integrated into the project's build process to produce HTML or other formats for convenient viewing.
+
+## - Benefits
+Spring REST Docs enables the creation of living documentation that stays synchronized with the codebase. By documenting API endpoints alongside the corresponding unit tests, it ensures that the documentation remains accurate and up-to-date, facilitating better collaboration and understanding among developers and stakeholders.
+
+## - Usage
+To access the API documentation, navigate to the target/generated-snippets directory and open the relevant snippet files. Alternatively, integrate the documentation generation process into the project's build pipeline to produce HTML or other formats for easy distribution and consumption.
+
+## - Further Customization
+Spring REST Docs offers extensive customization options, allowing developers to tailor the documentation to meet specific project requirements. Customizations can include adding additional sections, incorporating custom styling, or integrating with other documentation tools.
+
 # - Usage
 To use the APIs, simply deploy the Spring Boot application and interact with the provided endpoints.
 

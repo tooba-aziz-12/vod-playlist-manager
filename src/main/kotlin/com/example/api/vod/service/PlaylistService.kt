@@ -1,9 +1,7 @@
 package com.example.api.vod.service
 
 import com.example.api.vod.dto.PlaylistDto
-import com.example.api.vod.exception.FailedToFindPlaylistException
-import com.example.api.vod.exception.FailedToSavePlaylistException
-import com.example.api.vod.exception.PlaylistNotFoundException
+import com.example.api.vod.exception.*
 import com.example.api.vod.model.extension.convertToDto
 import com.example.api.vod.repository.PlaylistRepository
 import org.springframework.stereotype.Service
@@ -45,5 +43,18 @@ class PlaylistService(val playlistRepository: PlaylistRepository) {
         }catch (ex: Exception){
             throw FailedToSavePlaylistException(playlistName = newName)
         }
+    }
+
+    fun deletePlaylist(id: String) {
+        try {
+            val playlist  = playlistRepository.findById(id)
+                .orElseThrow { PlaylistNotFoundException(id) }
+            playlistRepository.delete(playlist)
+        }catch (ex: PlaylistNotFoundException){
+            throw ex
+        }catch (ex: Exception){
+            throw FailedToDeletePlaylistException(playlistId = id)
+        }
+
     }
 }
