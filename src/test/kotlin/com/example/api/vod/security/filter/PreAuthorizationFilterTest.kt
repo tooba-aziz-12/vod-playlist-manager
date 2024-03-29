@@ -102,7 +102,7 @@ internal class PreAuthorizationFilterTest {
             @Test
             fun missingHeaders() {
                 preAuthorizationFilter.doFilterInternal(httpServletRequest, httpServletResponse, filterChain)
-                Assertions.assertEquals(HttpStatus.BAD_REQUEST.value(), httpServletResponse.status)
+                Assertions.assertEquals(HttpStatus.UNAUTHORIZED.value(), httpServletResponse.status)
             }
 
         }

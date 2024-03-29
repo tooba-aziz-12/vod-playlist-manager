@@ -38,7 +38,7 @@ class PreAuthorizationFilter : OncePerRequestFilter() {
             injectSecurityPrincipal(userId, permissions)
             filterChain.doFilter(request, response)
         }catch (ex: Exception){
-            response.status = HttpStatus.BAD_REQUEST.value()
+            response.status = HttpStatus.UNAUTHORIZED.value()
         }
     }
 
