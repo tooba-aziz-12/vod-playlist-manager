@@ -1,0 +1,649 @@
+mvn -Dmaven.artifact.threads=10 clean
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.api:spring-boot-kotlin-starter-service:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.restdocs:spring-restdocs-mockmvc:jar -> duplicate declaration of version (?) @ line 94, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ---------< com.example.api:spring-boot-kotlin-starter-service >---------
+[INFO] Building vod_playlist_manager 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ spring-boot-kotlin-starter-service ---
+[INFO] Deleting /Users/toobaaziz/IdeaProjects/vod-playlist-manager/target
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.246 s
+[INFO] Finished at: 2024-03-29T13:05:33+05:00
+[INFO] ------------------------------------------------------------------------
+mvn verify
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.api:spring-boot-kotlin-starter-service:jar:0.0.1-SNAPSHOT
+[WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.springframework.restdocs:spring-restdocs-mockmvc:jar -> duplicate declaration of version (?) @ line 94, column 15
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] 
+[INFO] ---------< com.example.api:spring-boot-kotlin-starter-service >---------
+[INFO] Building vod_playlist_manager 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] Parameter 'propertiesEncoding' is unknown for plugin 'maven-resources-plugin:2.7:resources (default-resources)'
+[WARNING] Parameter 'propertiesEncoding' is unknown for plugin 'maven-resources-plugin:2.7:testResources (default-testResources)'
+[WARNING] Parameter 'propertiesEncoding' is unknown for plugin 'maven-resources-plugin:2.7:copy-resources (copy-resources)'
+[WARNING] The artifact mysql:mysql-connector-java:jar:8.0.31 has been relocated to com.mysql:mysql-connector-j:jar:8.0.31: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+[INFO] 
+[INFO] --- githook:1.0.5:install (default) @ spring-boot-kotlin-starter-service ---
+[INFO] Installing pre-commit hook into /Users/toobaaziz/IdeaProjects/vod-playlist-manager/.git/hooks
+[INFO] Installing pre-push hook into /Users/toobaaziz/IdeaProjects/vod-playlist-manager/.git/hooks
+[INFO] 
+[INFO] --- jacoco:0.8.8:prepare-agent (default) @ spring-boot-kotlin-starter-service ---
+[INFO] argLine set to -javaagent:/Users/toobaaziz/.m2/repository/org/jacoco/org.jacoco.agent/0.8.8/org.jacoco.agent-0.8.8-runtime.jar=destfile=/Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/jacoco.exec,excludes=**/*VodPlaylistManagerApplication*.*
+[INFO] 
+[INFO] --- resources:2.7:resources (default-resources) @ spring-boot-kotlin-starter-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:compile (default-compile) @ spring-boot-kotlin-starter-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- kotlin:1.7.22:compile (compile) @ spring-boot-kotlin-starter-service ---
+[INFO] Applied plugin: 'spring'
+[INFO] Applied plugin: 'jpa'
+[WARNING] /Users/toobaaziz/IdeaProjects/vod-playlist-manager/src/main/kotlin/com/example/api/vod/advice/ErrorResponseAdvisor.kt: (28, 33) Unchecked cast: (Mutable)List<String?>! to MutableList<String>
+[INFO] 
+[INFO] --- resources:2.7:testResources (default-testResources) @ spring-boot-kotlin-starter-service ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- compiler:3.10.1:testCompile (default-testCompile) @ spring-boot-kotlin-starter-service ---
+[INFO] Changes detected - recompiling the module!
+[INFO] 
+[INFO] --- kotlin:1.7.22:test-compile (test-compile) @ spring-boot-kotlin-starter-service ---
+[INFO] Applied plugin: 'spring'
+[INFO] Applied plugin: 'jpa'
+[WARNING] /Users/toobaaziz/IdeaProjects/vod-playlist-manager/src/test/kotlin/com/example/api/vod/config/PersistenceConfigurationTest.kt: (11, 8) This class shouldn't be used in Kotlin. Use kotlin.collections.Map or kotlin.collections.MutableMap instead.
+[WARNING] /Users/toobaaziz/IdeaProjects/vod-playlist-manager/src/test/kotlin/com/example/api/vod/security/config/ApplicationSecurityConfigurationTest.kt: (105, 52) Unnecessary non-null assertion (!!) on a non-null receiver of type HttpSecurity
+[INFO] 
+[INFO] --- surefire:2.22.2:test (default-test) @ spring-boot-kotlin-starter-service ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.example.api.vod.config.AuditorAwareConfigurationTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.382 s - in com.example.api.vod.config.AuditorAwareConfigurationTest
+[INFO] Running com.example.api.vod.config.PersistenceConfigurationTest
+13:05:50.370 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class org.h2.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44
+13:05:50.462 [main] DEBUG org.jboss.logging - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+13:05:50.465 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class org.h2.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44
+[ERROR] Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.303 s <<< FAILURE! - in com.example.api.vod.config.PersistenceConfigurationTest
+[ERROR] platformTransactionManagerTest  Time elapsed: 0.001 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: interface jakarta.persistence.EntityManagerFactory.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [interface jakarta.persistence.EntityManagerFactory, interface java.lang.AutoCloseable]
+	at com.example.api.vod.config.PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest(PersistenceConfigurationTest.kt:70)
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [interface jakarta.persistence.EntityManagerFactory, interface java.lang.AutoCloseable]
+	at com.example.api.vod.config.PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest(PersistenceConfigurationTest.kt:70)
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+	at com.example.api.vod.config.PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest(PersistenceConfigurationTest.kt:70)
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+	at com.example.api.vod.config.PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest(PersistenceConfigurationTest.kt:70)
+
+[INFO] Running com.example.api.vod.config.LiquibaseConfigurationTest
+13:05:50.536 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44
+13:05:50.546 [main] DEBUG com.zaxxer.hikari.HikariConfig - Driver class com.mysql.cj.jdbc.Driver found in Thread context class loader jdk.internal.loader.ClassLoaders$AppClassLoader@c387f44
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s - in com.example.api.vod.config.LiquibaseConfigurationTest
+[INFO] Running com.example.api.vod.security.config.ApplicationSecurityConfigurationTest
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.2 s <<< FAILURE! - in com.example.api.vod.security.config.ApplicationSecurityConfigurationTest
+[ERROR] configureHttpSecurity  Time elapsed: 0 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class org.springframework.security.config.annotation.web.builders.HttpSecurity.
+Can not mock final classes with the following settings :
+ - explicit serialization (e.g. withSettings().serializable())
+ - extra interfaces (e.g. withSettings().extraInterfaces(...))
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder, class org.springframework.security.config.annotation.AbstractSecurityBuilder, class org.springframework.security.config.annotation.web.builders.HttpSecurity, class java.lang.Object, interface org.springframework.security.config.annotation.web.HttpSecurityBuilder, interface org.springframework.security.config.annotation.SecurityBuilder]
+	at com.example.api.vod.security.config.ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>(ApplicationSecurityConfigurationTest.kt:38)
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder, class org.springframework.security.config.annotation.AbstractSecurityBuilder, class org.springframework.security.config.annotation.web.builders.HttpSecurity, class java.lang.Object, interface org.springframework.security.config.annotation.web.HttpSecurityBuilder, interface org.springframework.security.config.annotation.SecurityBuilder]
+	at com.example.api.vod.security.config.ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>(ApplicationSecurityConfigurationTest.kt:38)
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+	at com.example.api.vod.security.config.ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>(ApplicationSecurityConfigurationTest.kt:38)
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+	at com.example.api.vod.security.config.ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>(ApplicationSecurityConfigurationTest.kt:38)
+
+[INFO] Running com.example.api.vod.security.filter.PreAuthorizationFilterTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.164 s - in com.example.api.vod.security.filter.PreAuthorizationFilterTest
+[INFO] Running com.example.api.vod.advice.ErrorResponseAdvisorTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.215 s - in com.example.api.vod.advice.ErrorResponseAdvisorTest
+[INFO] Running com.example.api.vod.controller.PlaylistControllerTest
+[ERROR] Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.204 s <<< FAILURE! - in com.example.api.vod.controller.PlaylistControllerTest
+[ERROR] shouldReturn400OnBadPayload  Time elapsed: 0.03 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] upsertPlaylist  Time elapsed: 0.033 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] getPlaylistById  Time elapsed: 0.031 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] shouldReturn405OnEmptyPathVar  Time elapsed: 0.028 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] updatePlaylistName  Time elapsed: 0.028 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] shouldReturn405OnEmptyPathVar  Time elapsed: 0.039 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[INFO] Running com.example.api.vod.controller.PlaylistItemControllerTest
+[ERROR] Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.216 s <<< FAILURE! - in com.example.api.vod.controller.PlaylistItemControllerTest
+[ERROR] reorderPlaylist  Time elapsed: 0.041 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] return400OnBadPayload  Time elapsed: 0.03 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] updatePlaylistItem  Time elapsed: 0.031 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] return400OnBadPayload  Time elapsed: 0.032 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] deletePlaylistItem  Time elapsed: 0.033 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[ERROR] return400OnBadPayload  Time elapsed: 0.033 s  <<< ERROR!
+org.mockito.exceptions.base.MockitoException: 
+
+Mockito cannot mock this class: class com.example.api.vod.service.PlaylistItemService.
+
+If you're not sure why you're getting this error, please open an issue on GitHub.
+
+
+Java               : 21
+JVM vendor name    : Homebrew
+JVM vendor version : 21.0.1
+JVM name           : OpenJDK 64-Bit Server VM
+JVM version        : 21.0.1
+JVM info           : mixed mode, sharing
+OS name            : Mac OS X
+OS version         : 12.5
+
+
+You are seeing this disclaimer because Mockito is configured to create inlined mocks.
+You can learn about inline mocks and their limitations under item #39 of the Mockito class javadoc.
+
+Underlying exception : org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: org.mockito.exceptions.base.MockitoException: Could not modify all classes [class java.lang.Object, class com.example.api.vod.service.PlaylistItemService]
+Caused by: java.lang.IllegalStateException: 
+
+Byte Buddy could not instrument all classes within the mock's type hierarchy
+
+This problem should never occur for javac-compiled classes. This problem has been observed for classes that are:
+ - Compiled by older versions of scalac
+ - Classes that are part of the Android distribution
+Caused by: java.lang.IllegalArgumentException: Java 21 (65) is not supported by the current version of Byte Buddy which officially supports Java 20 (64) - update Byte Buddy or set net.bytebuddy.experimental as a VM property
+
+[INFO] Running com.example.api.vod.VodPlaylistManagerApplicationTests
+13:05:51.756 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [VodPlaylistManagerApplicationTests]: using SpringBootContextLoader
+13:05:51.757 [main] DEBUG org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [com.example.api.vod.VodPlaylistManagerApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+13:05:51.758 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils - Could not detect default configuration classes for test class [com.example.api.vod.VodPlaylistManagerApplicationTests]: VodPlaylistManagerApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+13:05:51.791 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using ContextCustomizers for test class [VodPlaylistManagerApplicationTests]: [ExcludeFilterContextCustomizer, DuplicateJsonObjectContextCustomizer, MockitoContextCustomizer, TestRestTemplateContextCustomizer, DisableObservabilityContextCustomizer, PropertyMappingContextCustomizer, Customizer]
+13:05:51.886 [main] DEBUG org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider - Identified candidate component class: file [/Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/classes/com/example/api/vod/VodPlaylistManagerApplication.class]
+13:05:51.887 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Found @SpringBootConfiguration com.example.api.vod.VodPlaylistManagerApplication for test class com.example.api.vod.VodPlaylistManagerApplicationTests
+13:05:52.014 [main] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners for test class [VodPlaylistManagerApplicationTests]: [ServletTestExecutionListener, DirtiesContextBeforeModesTestExecutionListener, ApplicationEventsTestExecutionListener, MockitoTestExecutionListener, DependencyInjectionTestExecutionListener, DirtiesContextTestExecutionListener, TransactionalTestExecutionListener, SqlScriptsTestExecutionListener, EventPublishingTestExecutionListener, WithSecurityContextTestExecutionListener, ReactorContextTestExecutionListener, ResetMocksTestExecutionListener, RestDocsTestExecutionListener, MockRestServiceServerResetTestExecutionListener, MockMvcPrintOnlyOnFailureTestExecutionListener, WebDriverTestExecutionListener, MockWebServiceServerTestExecutionListener]
+13:05:52.015 [main] DEBUG org.springframework.test.context.support.AbstractDirtiesContextTestExecutionListener - Before test class: class [VodPlaylistManagerApplicationTests], class annotated with @DirtiesContext [false] with mode [null]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.0.1)
+
+2024-03-29T13:05:52.412+05:00  INFO 18255 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : Starting VodPlaylistManagerApplicationTests using Java 21.0.1 with PID 18255 (started by toobaaziz in /Users/toobaaziz/IdeaProjects/vod-playlist-manager)
+2024-03-29T13:05:52.414+05:00  INFO 18255 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : No active profile set, falling back to 1 default profile: "default"
+2024-03-29T13:05:52.846+05:00  INFO 18255 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-03-29T13:05:52.892+05:00  INFO 18255 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 2 JPA repository interfaces.
+2024-03-29T13:05:53.760+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-03-29T13:05:55.674+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@55398902
+2024-03-29T13:05:55.676+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-03-29T13:05:55.929+05:00  INFO 18255 --- [           main] liquibase.lockservice                    : Successfully acquired change log lock
+2024-03-29T13:05:56.177+05:00  INFO 18255 --- [           main] liquibase.changelog                      : Reading from vod_db.DATABASECHANGELOG
+2024-03-29T13:05:56.226+05:00  INFO 18255 --- [           main] liquibase.lockservice                    : Successfully released change log lock
+2024-03-29T13:05:56.307+05:00  INFO 18255 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: vod]
+2024-03-29T13:05:56.366+05:00  INFO 18255 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.6.Final
+2024-03-29T13:05:56.402+05:00  WARN 18255 --- [           main] org.hibernate.orm.deprecation            : HHH90000021: Encountered deprecated setting [javax.persistence.sharedCache.mode], use [jakarta.persistence.sharedCache.mode] instead
+2024-03-29T13:05:56.545+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2024-03-29T13:05:56.557+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@707f4505
+2024-03-29T13:05:56.557+05:00  INFO 18255 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2024-03-29T13:05:56.587+05:00  INFO 18255 --- [           main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.MySQLDialect
+2024-03-29T13:05:57.270+05:00  INFO 18255 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-03-29T13:05:57.280+05:00  INFO 18255 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'vod'
+2024-03-29T13:05:58.115+05:00  WARN 18255 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-03-29T13:05:58.133+05:00  WARN 18255 --- [           main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 87840c5d-f6ff-469b-9dbf-b7d1714c641c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2024-03-29T13:05:58.371+05:00  INFO 18255 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5de10f47, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@769e210b, org.springframework.security.web.context.SecurityContextHolderFilter@3d80a80e, org.springframework.security.web.header.HeaderWriterFilter@3f8fb7be, org.springframework.web.filter.CorsFilter@527c7ee1, org.springframework.security.web.authentication.logout.LogoutFilter@1f26bd2a, com.example.api.vod.security.filter.PreAuthorizationFilter@16534841, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4c230867, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ca43c14, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6a78192c, org.springframework.security.web.session.SessionManagementFilter@6d51fcfb, org.springframework.security.web.access.ExceptionTranslationFilter@574b6cf, org.springframework.security.web.access.intercept.AuthorizationFilter@2af259c3]
+2024-03-29T13:05:58.619+05:00  INFO 18255 --- [           main] e.a.v.VodPlaylistManagerApplicationTests : Started VodPlaylistManagerApplicationTests in 6.57 seconds (process running for 15.36)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.002 s - in com.example.api.vod.VodPlaylistManagerApplicationTests
+[INFO] Running com.example.api.vod.model.BaseEntityTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.example.api.vod.model.BaseEntityTest
+[INFO] Running com.example.api.vod.service.PlaylistServiceTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.089 s - in com.example.api.vod.service.PlaylistServiceTest
+[INFO] Running com.example.api.vod.service.PlayListItemServiceTest
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in com.example.api.vod.service.PlayListItemServiceTest
+2024-03-29T13:05:58.800+05:00  INFO 18255 --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'vod'
+2024-03-29T13:05:58.937+05:00  INFO 18255 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2024-03-29T13:05:58.943+05:00  INFO 18255 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2024-03-29T13:05:58.943+05:00  INFO 18255 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-03-29T13:05:58.951+05:00  INFO 18255 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   PersistenceConfigurationTest$TestPlatformTransactionManager.platformTransactionManagerTest:70 Mockito
+[ERROR]   PlaylistControllerTest$GetPlaylistTest.getPlaylistById » Mockito 
+Mockito cann...
+[ERROR]   PlaylistControllerTest$GetPlaylistTest.shouldReturn405OnEmptyPathVar » Mockito
+[ERROR]   PlaylistControllerTest$UpdatePlaylistNameTest.shouldReturn405OnEmptyPathVar » Mockito
+[ERROR]   PlaylistControllerTest$UpdatePlaylistNameTest.updatePlaylistName » Mockito 
+Mo...
+[ERROR]   PlaylistControllerTest$UpsertPlaylistTest.shouldReturn400OnBadPayload » Mockito
+[ERROR]   PlaylistControllerTest$UpsertPlaylistTest.upsertPlaylist » Mockito 
+Mockito ca...
+[ERROR]   PlaylistItemControllerTest$DeletePlaylistItemTest.deletePlaylistItem » Mockito
+[ERROR]   PlaylistItemControllerTest$DeletePlaylistItemTest.return400OnBadPayload » Mockito
+[ERROR]   PlaylistItemControllerTest$ReorderPlaylistItemTest.reorderPlaylist » Mockito 
+...
+[ERROR]   PlaylistItemControllerTest$ReorderPlaylistItemTest.return400OnBadPayload » Mockito
+[ERROR]   PlaylistItemControllerTest$UpdatePlaylistItemTest.return400OnBadPayload » Mockito
+[ERROR]   PlaylistItemControllerTest$UpdatePlaylistItemTest.updatePlaylistItem » Mockito
+[ERROR]   ApplicationSecurityConfigurationTest$SpringSecurityConfiguration.<init>:38 Mockito
+[INFO] 
+[ERROR] Tests run: 58, Failures: 0, Errors: 14, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  24.652 s
+[INFO] Finished at: 2024-03-29T13:05:59+05:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project spring-boot-kotlin-starter-service: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /Users/toobaaziz/IdeaProjects/vod-playlist-manager/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
