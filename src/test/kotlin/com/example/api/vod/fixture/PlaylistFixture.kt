@@ -1,8 +1,6 @@
 package com.example.api.vod.fixture
 
-import com.example.api.vod.dto.PlayListReorderItemDto
-import com.example.api.vod.dto.PlaylistItemDeleteDto
-import com.example.api.vod.dto.PlaylistItemUpdateDto
+import com.example.api.vod.dto.*
 import com.example.api.vod.model.Playlist
 import com.example.api.vod.model.PlaylistItem
 import com.example.api.vod.model.extension.convertToDto
@@ -45,8 +43,6 @@ class PlaylistFixture {
             )
         }
 
-        val emptyPlaylistDto = playlist.convertToDto()
-
         val playlistDto =  playlist.convertToDto()
 
         val playlistItem = PlaylistItem(
@@ -67,9 +63,16 @@ class PlaylistFixture {
             sequence = 2L
         )
 
-        val playlistItemDto = playlistItem.convertToDto()
+        private val playlistItemDto = playlistItem.convertToDto()
 
-        val playlistItem2Dto = playlistItem2.convertToDto()
+        val playlistItem2Dto = PlaylistItemDto(
+            playlistId = playlistItem2.playlist.id!!,
+            videoId = playlistItem2.videoId,
+            startTime = playlistItem2.startTime,
+            endTime = playlistItem2.endTime,
+            name = playlistItem2.name,
+            sequence = playlistItem2.sequence
+        )
 
         val playListReorderItemDto = PlayListReorderItemDto(
             playlistId = "test-id",
@@ -87,6 +90,10 @@ class PlaylistFixture {
         val deletePlaylistItem = PlaylistItemDeleteDto(
             "test-playlist",
             "test-item"
+        )
+
+        val emptyPlaylistDto = PlaylistDto(
+            name = emptyPlaylist.name
         )
 
     }

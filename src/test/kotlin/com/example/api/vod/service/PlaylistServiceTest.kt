@@ -1,9 +1,11 @@
 package com.example.api.vod.service
 
+import com.example.api.vod.dto.PlaylistDto
 import com.example.api.vod.exception.FailedToFindPlaylistException
 import com.example.api.vod.exception.FailedToSavePlaylistException
 import com.example.api.vod.exception.PlaylistNotFoundException
 import com.example.api.vod.fixture.PlaylistFixture.Companion.emptyPlaylist
+import com.example.api.vod.fixture.PlaylistFixture.Companion.emptyPlaylistDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlist
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistItem2
@@ -51,12 +53,10 @@ class PlaylistServiceTest {
         @Test
         fun createEmptyPlaylist(){
 
-            val requestDto = emptyPlaylist.convertToDto()
-
             val requestPlaylist = emptyPlaylist.copy()
             whenever(playlistRepository.save(playlistCaptor.capture())).thenReturn(requestPlaylist)
 
-            val createdPlaylist = playlistService.upsertPlaylist(requestDto)
+            val createdPlaylist = playlistService.upsertPlaylist(emptyPlaylistDto)
 
             Mockito.verify(playlistRepository, times(1)).save(playlistCaptor.capture())
 

@@ -20,13 +20,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @ExtendWith(MockitoExtension::class)
 internal class ApplicationSecurityConfigurationTest {
-    private lateinit var securityConfig: com.example.api.vod.security.config.ApplicationSecurityConfiguration
+    private lateinit var securityConfig: ApplicationSecurityConfiguration
 
     @Mock
     private val preAuthorizationFilter: PreAuthorizationFilter = PreAuthorizationFilter()
     @BeforeEach
     fun beforeEach() {
-        securityConfig = com.example.api.vod.security.config.ApplicationSecurityConfiguration(
+        securityConfig = ApplicationSecurityConfiguration(
             preAuthorizationFilter
         )
     }

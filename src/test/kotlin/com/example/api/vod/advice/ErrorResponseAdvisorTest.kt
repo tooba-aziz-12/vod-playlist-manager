@@ -136,4 +136,16 @@ class ErrorResponseAdvisorTest{
         Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.PLAYLIST_NOT_FOUND.name)
     }
 
+    @Test
+    fun errorResponseInvalidFieldValueException() {
+        val errorMessage = "Invalid field value"
+        val exception = InvalidFieldValueException(errorMessage = errorMessage)
+        val responseEntity: ResponseEntity<ErrorMessageDto> =
+            errorResponseAdvisor.handleInvalidFieldValueException(exception)
+
+        Assertions.assertEquals(HttpStatus.UNPROCESSABLE_ENTITY, responseEntity.statusCode)
+        Assertions.assertEquals(responseEntity.body!!.errorCode, ErrorCode.INVALID_FIELD_VALUE.name)
+        Assertions.assertEquals(responseEntity.body!!.message[0], errorMessage)
+    }
+
 }

@@ -77,8 +77,10 @@ class PlayListItemServiceTest {
                     it.startTime,
                     it.endTime,
                     it.name,
-                    it.sequence
-                ).apply { this@apply.id = it.id }
+                ).apply {
+                    this@apply.id = it.id
+                    this@apply.sequence = it.sequence
+                }
             }.toMutableList()
 
             whenever(playlistRepository.save(playlistCaptor.capture())).thenReturn(reorderedPlaylist)
@@ -91,6 +93,8 @@ class PlayListItemServiceTest {
             val actualInvocationOfSave = playlistCaptor.value
 
             Assertions.assertEquals(2, actualInvocationOfSave.items[0].sequence)
+            Assertions.assertEquals(1, actualInvocationOfSave.items[1].sequence)
+
         }
 
         @Test
@@ -148,7 +152,9 @@ class PlayListItemServiceTest {
         fun updatePlaylistItem(){
 
             val playlistFromDb  = playlist.copy()
+            playlistFromDb.name = "old-item-name"
             playlistFromDb.items[0].id = playListItemUpdateDto.playlistItemId
+
             whenever(playlistRepository.findById(playListItemUpdateDto.playlistId)).thenReturn(Optional.of(playlistFromDb))
             whenever(playlistRepository.save(playlistCaptor.capture())).thenReturn(playlist)
             playlistItemService.updatePlaylistItem(playListItemUpdateDto)
@@ -247,6 +253,23 @@ class PlayListItemServiceTest {
 
             Mockito.verify(playListItemRepository, times(1)).findByPlaylistIdAndId(deletePlaylistItem.playlistId, deletePlaylistItem.playlistItemId)
             Mockito.verify(playListItemRepository, times(1)).delete(playlistItem2)
+
+        }
+
+        @Test
+        fun customExceptionOnDeleteFailure(){
+
+            whenever(playListItemRepository.findByPlaylistIdAndId(deletePlaylistItem.playlistId, deletePlaylistItem.playlistItemId))
+                .thenReturn(Optional.empty())
+
+            try {
+                playlistItemService.deleteItem(deletePlaylistItem)
+            }catch (ex: Exception){
+                Assertions.assertEquals(PlaylistItemNotFoundException::class.java, ex.javaClass)
+            }
+
+            Mockito.verify(playListItemRepository, times(1)).findByPlaylistIdAndId(deletePlaylistItem.playlistId, deletePlaylistItem.playlistItemId)
+            Mockito.verify(playListItemRepository, times(0)).delete(playlistItem2)
 
         }
     }

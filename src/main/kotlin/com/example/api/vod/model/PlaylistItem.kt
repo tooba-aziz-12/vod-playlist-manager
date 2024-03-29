@@ -8,10 +8,10 @@ data class PlaylistItem(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "playlist_id")
-    var playlist: Playlist,
+    val playlist: Playlist,
 
     @Column(name = "video_id")
-    var videoId: String,
+    val videoId: String,
 
     @Column(name = "start_time")
     var startTime: Long,

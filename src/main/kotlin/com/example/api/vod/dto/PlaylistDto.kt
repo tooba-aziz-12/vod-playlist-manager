@@ -10,7 +10,7 @@ data class PlaylistDto(
     @field:NotBlank(message = "Name cannot be empty")
     val name: String,
 
-    var items: MutableList<PlaylistItemDto> = mutableListOf()
+    val items: MutableList<PlaylistItemDto> = mutableListOf()
 ){
     fun toPlaylist(): Playlist{
         val playlist =  Playlist(
@@ -48,7 +48,7 @@ data class PlaylistItemDto(
     val startTime: Long,
     val endTime: Long,
     @field:NotBlank(message = "Name cannot be empty")
-    var name: String,
+    val name: String,
     var sequence: Long
 )
 
@@ -61,13 +61,13 @@ data class PlayListReorderItemDto(
 
 data class PlaylistItemUpdateDto(
     @field:NotBlank(message = "Playlist id cannot be empty")
-    var playlistId: String,
+    val playlistId: String,
 
     @field:NotBlank(message = "Item id cannot be empty")
-    var playlistItemId: String,
+    val playlistItemId: String,
 
     @field:NotBlank(message = "Name cannot be empty")
-    var name: String,
+    val name: String,
 
     var startTime: Long,
 
@@ -75,8 +75,8 @@ data class PlaylistItemUpdateDto(
 )
 data class PlaylistItemDeleteDto(
     @field:NotBlank(message = "Playlist id cannot be empty")
-    var playlistId: String,
+    val playlistId: String,
 
     @field:NotBlank(message = "Item id cannot be empty")
-    var playlistItemId: String,
+    val playlistItemId: String,
 )
