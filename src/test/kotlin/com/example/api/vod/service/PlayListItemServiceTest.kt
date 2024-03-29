@@ -6,6 +6,7 @@ import com.example.api.vod.fixture.PlaylistFixture.Companion.deletePlaylistItem
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playListItemUpdateDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playListReorderItemDto
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlist
+import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistItem
 import com.example.api.vod.fixture.PlaylistFixture.Companion.playlistItem2
 import com.example.api.vod.model.Playlist
 import com.example.api.vod.model.PlaylistItem
@@ -21,10 +22,7 @@ import org.mockito.Captor
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.jupiter.MockitoExtension
-import org.mockito.kotlin.argumentCaptor
-import org.mockito.kotlin.doNothing
-import org.mockito.kotlin.times
-import org.mockito.kotlin.whenever
+import org.mockito.kotlin.*
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.util.*
@@ -271,6 +269,24 @@ class PlayListItemServiceTest {
             Mockito.verify(playListItemRepository, times(1)).findByPlaylistIdAndId(deletePlaylistItem.playlistId, deletePlaylistItem.playlistItemId)
             Mockito.verify(playListItemRepository, times(0)).delete(playlistItem2)
 
+        }
+
+        @Test
+        fun customExceptionIfDeleteFails(){
+
+            whenever(playListItemRepository.findByPlaylistIdAndId(deletePlaylistItem.playlistId, deletePlaylistItem.playlistItemId)).thenReturn(Optional.of(playlistItem))
+
+            whenever(playListItemRepository.delete(any())).thenThrow(RuntimeException())
+
+            try {
+                playlistItemService.deleteItem(deletePlaylistItem)
+            }catch (ex: Exception){
+                Assertions.assertEquals(FailedToDeletePlaylistItemException::class.java, ex.javaClass)
+            }
+
+            Mockito.verify(playListItemRepository, times(1)).findByPlaylistIdAndId(deletePlaylistItem.playlistId, deletePlaylistItem.playlistItemId)
+
+            Mockito.verify(playListItemRepository, times(1)).delete(any())
         }
     }
 

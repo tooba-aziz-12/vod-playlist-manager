@@ -261,19 +261,16 @@ class PlaylistServiceTest {
     inner class DeletePlaylistTest{
         val playlistId = "test-playlist-id"
         @Test
-        fun updatePlaylistName(){
+        fun deletePlaylist(){
 
             whenever(playlistRepository.findById(playlistId)).thenReturn(Optional.of(playlist))
 
-            doNothing().whenever(playlistRepository.delete(playlistCaptor.capture()))
+            doNothing().whenever(playlistRepository).delete(playlistCaptor.capture())
 
             playlistService.deletePlaylist(playlistId)
-
             Mockito.verify(playlistRepository, times(1)).findById(playlistId)
 
             Mockito.verify(playlistRepository, times(1)).delete(playlistCaptor.capture())
-
-            Mockito.verify(playlistRepository, times(1)).deleteById(playlistId)
         }
 
         @Test
@@ -281,13 +278,11 @@ class PlaylistServiceTest {
 
             whenever(playlistRepository.findById(playlistId)).thenReturn(Optional.empty())
 
-
             try {
                 playlistService.deletePlaylist(playlistId)
             }catch (ex: Exception){
                 Assertions.assertEquals(PlaylistNotFoundException::class.java, ex.javaClass)
             }
-
 
             Mockito.verify(playlistRepository, times(1)).findById(playlistId)
 
@@ -295,7 +290,7 @@ class PlaylistServiceTest {
         }
 
         @Test
-        fun customExceptionIfSaveFails(){
+        fun customExceptionIfDeleteFails(){
 
             whenever(playlistRepository.findById(playlistId)).thenReturn(Optional.of(playlist))
 
